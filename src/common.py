@@ -18,7 +18,7 @@ def get_compteur_id(string):
         rv = int(f.read(),10)
         f.close()
         f = open("../data/int/{0}".format(string), "w")
-        f.write(str(rv+1))
+        f.write(str(rv + 1))
     except IOError:
         f = open("../data/int/{0}".format(string), "w")
         f.write('0')
