@@ -1,16 +1,7 @@
-import sys
-
-def parsearg():
-    globals()['status'] = {"test":False};
-    for arg in sys.argv:
-        if arg == '-t':
-            globals()['status']["test"] = True
-        else:
-            print("unknown argument : " + arg)
-    return None
+from ArgParse import parsearg, StatusArg
 
 def main():
-    parsearg()
+    parsearg(globals())
     return None
 
 if __name__ == '__main__':
