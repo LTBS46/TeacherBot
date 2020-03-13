@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "PL4353 45K TH3 T34CH3R 80T",
   "main": "src/__main__.py",
+  "token": {
+    "discord":"WoKuq3DpNP6_7zzdaDx7HO2bK_qCGdyo"
+  }
   "scripts": {
     "test": "src/__main__.py -t"
   },

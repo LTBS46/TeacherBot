@@ -1,5 +1,5 @@
 from ArgParse import parsearg, StatusArg
-import COVID19, common as c
+import COVID19, common as c, Discord
 
 def main():
     parsearg(globals())
