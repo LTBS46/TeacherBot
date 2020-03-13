@@ -1,17 +1,6 @@
-import urllib as _url, json as _js
+import json as _js, common as _c
 
-def get_string_from_url(url):
-    str = ''
-    try:
-        f = _url.urlopen(url)
-        str = f.read()
-    except:
-        print("cannot access : {0}".format(url))
-    finally:
-        f.close()
-    return str
-
-def get_dimension():
+def get_who_dimension():
     str = get_string_from_url("https://ghoapi.azureedge.net/api/Dimension")
     obj = _js.loads(str)
     code_list = []
@@ -21,7 +10,7 @@ def get_dimension():
         title_list.append(i[u'Title'])
     return (code_list, title_list)
 
-def get_indicator():
+def get_who_indicator():
     str = get_string_from_url('https://ghoapi.azureedge.net/api/Indicator')
     obj = _js.loads(str)
     name_list = []
@@ -32,4 +21,4 @@ def get_indicator():
     return (code_list, name_list)
 
 
-del _url
+del _js, _c

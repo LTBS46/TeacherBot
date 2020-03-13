@@ -1,4 +1,5 @@
 from ArgParse import parsearg, StatusArg
+import COVID19, common as c
 
 def main():
     parsearg(globals())

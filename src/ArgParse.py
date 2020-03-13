@@ -1,4 +1,4 @@
-import sys as _sys
+import sys as _sys, common as _c
 
 class StatusArg:
     def __init__(self):
@@ -13,4 +13,4 @@ def parsearg(globvar):
             print("unknown argument : " + arg)
     return None
 
-del _sys
+del _sys, _c
