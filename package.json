@@ -2,9 +2,9 @@
   "name": "teacherbot",
   "version": "1.0.0",
   "description": "PL4353 45K TH3 T34CH3R 80T",
-  "main": "__main__.py",
+  "main": "src/__main__.py",
   "scripts": {
-    "test": "__main__.py -t"
+    "test": "src/__main__.py -t"
   },
   "repository": {
     "type": "git",
