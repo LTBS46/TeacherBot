@@ -1,0 +1,22 @@
+{
+  "name": "teacherbot",
+  "version": "1.0.0",
+  "description": "PL4353 45K TH3 T34CH3R 80T",
+  "main": "__main__.py",
+  "scripts": {
+    "test": "__main__.py -t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTBS46/TeacherBot.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "LTBS46, Corzeus, Babouche007, Raxyl38",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LTBS46/TeacherBot/issues"
+  },
+  "homepage": "https://github.com/LTBS46/TeacherBot#readme"
+}
