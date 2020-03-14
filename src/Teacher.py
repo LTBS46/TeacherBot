@@ -1,16 +1,7 @@
 import discord, Discord as _D, common as _c, TeacherFunc as Do
 from discord.ext import commands
 
-def get_role_member(payload):
-    guild_id = payload.guild_id
-    guild = discord.utils.find(lambda g : g.id == guild_id , client.guilds)
-    emoji_name = payload.emoji.name
-    try:
-        role = discord.utils.get(guild.roles , name=emoji_name)
-        member = discord.utils.find(lambda m : m.id == payload.user_id , guild.members)
-        return role,member,emoji_name
-    except:
-        pass
+
 
 
 class Teacher(discord.Client)
@@ -26,8 +17,7 @@ class Teacher(discord.Client)
             try:
                 role,member,emoji_name = get_role_member(payload)
                 await member.add_roles(role)
-                cdc = ":white_check_mark: Tu as maintenant accès aux salons " + emoji_name + " , Bon travail !"
-                await member.send(cdc)
+                await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !"%(emoji_name))
             except:
                 await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
 
@@ -61,6 +51,17 @@ class Teacher(discord.Client)
                 Do.commdict[token_s[0][0]](self, message, token_s)
             except KeyError:
                 Do.__(self, message, token_s)
+
+    def get_role_member(self, payload):
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id , self.guilds)
+        emoji_name = payload.emoji.name
+        try:
+            role = discord.utils.get(guild.roles , name=emoji_name)
+            member = discord.utils.find(lambda m : m.id == payload.user_id , guild.members)
+            return role,member,emoji_name
+        except:
+            pass
 
 
 del discord, commands, _D, Do, _c
