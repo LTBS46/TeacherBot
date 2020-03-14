@@ -38,10 +38,36 @@ def get_compteur_id(string):
 def get_token():
     rv = None
     try:
-        f = open("{0}{1}package.json".format(_os.pardir,_os.sep),"r")
+        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
         str = f.read()
         obj = _js.loads(str)
         rv = obj["token"]["discord"]
+    except IOError:
+        print("file not found or can't be read")
+    finally:
+        f.close()
+    return rv
+
+def get_master_guild():
+    rv = None
+    try:
+        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
+        str = f.read()
+        obj = _js.loads(str)
+        rv = obj["main_guild"]
+    except IOError:
+        print("file not found or can't be read")
+    finally:
+        f.close()
+    return rv
+
+def get_master_channel():
+    rv = None
+    try:
+        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
+        str = f.read()
+        obj = _js.loads(str)
+        rv = obj["main_channel"]
     except IOError:
         print("file not found or can't be read")
     finally:
