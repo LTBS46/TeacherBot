@@ -1,4 +1,5 @@
 import discord
+import Discord as _D
 from discord.ext import commands
 
 
@@ -12,3 +13,5 @@ async def on_ready();
 async def on_message();
     #on analyse les messages qu'ils nou envoie et on adapte en fonction
     pass
+
+del discord, commands

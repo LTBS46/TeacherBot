@@ -1,7 +1,7 @@
 #{ "maths":{"nom devoir 1":"à faire", "nom devoir 2":"à faire"},
 # "francais":....,
 #}
-import os
+import _os
 
 class Devoirs():
     def __init__(self):
@@ -13,8 +13,8 @@ class Devoirs():
 
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
-            if not os.path.exists(path_dir):
-                os.makedirs(path_dir)
+            if not _os.path.exists(path_dir):
+                _os.makedirs(path_dir)
 
             with open(path, "w") as f:
                 f.write(content)
@@ -30,7 +30,7 @@ class Devoirs():
         path = "Data/"+matiere+"/"+nom+".txt"
         if not matiere in self.donnees:
             self.donnees[matiere] = {}
-        if not os.path.exists(path_dir):
+        if not _os.path.exists(path_dir):
             return "path doesn't exist"
 
         with open(path, "r") as f:
@@ -57,3 +57,4 @@ class Devoirs():
 C = Devoirs()
 
 
+del _os
