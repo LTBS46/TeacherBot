@@ -1,4 +1,4 @@
-import urllib as _url
+import urllib as _url, json as _js
 
 def get_string_from_url(url):
     str = ''
@@ -35,4 +35,17 @@ def get_compteur_id(string):
         f.close()
     return rv
 
-del _url
+def get_token():
+    rv = None
+    try:
+        f = open("../package.json","r")
+        str = f.read()
+        obj = _js.loads(str)
+        rv = obj["token"]["discord"]
+    except IOError:
+        print("file not found or can't be read")
+    finally:
+        f.close()
+    return rv
+
+del _url, _js

@@ -2,16 +2,16 @@ import discord
 import Discord as _D
 from discord.ext import commands
 
+class Teacher(discord.Client)
+    def __init__():
+        super().__init__(self)
 
-Teacher = commands.Bot(command_prefix = '/')
+    async def on_ready();
+        pass
 
-@Teacher.event
-async def on_ready();
-    #load data
-    pass
+    async def on_message(message);
+        if _D.is_command(message.content):
+            pass
 
-async def on_message();
-    #on analyse les messages qu'ils nou envoie et on adapte en fonction
-    pass
-
+#Teacher = commands.Bot(command_prefix = '$')
 del discord, commands
