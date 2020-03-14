@@ -5,11 +5,12 @@ from discord.ext import commands
 class Teacher(discord.Client)
     def __init__(self):
         super().__init__(self)
+        await self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
     async def on_ready(self):
-        pass
+        print('logged as {0}'.format(self.user))
 
-    async def on_message(self, message)
+    async def on_message(self, message):
         if (message.author == self.user):
             return
         elif _D.is_command(message.content):
