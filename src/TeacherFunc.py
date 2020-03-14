@@ -40,3 +40,17 @@ def change_cours(b, message, token_s):
 def __(b, message, token_s):
     await message.channel.trigger_typing()
     await message.channel.send('unknown command : {0}'.format(message.content))
+
+commdict = {
+    'ping':ping,
+    'print':_print,
+    'echo':echo,
+    'new-dev':new_dev,
+    'change-dev':change_dev,
+    'del-dev':del_dev,
+    'get-dev':get_dev,
+    'new-cours':new_cours,
+    'change-cours':change_cours,
+    'del-cours':del_cours,
+    'get-cours':get_cours,
+}

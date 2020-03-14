@@ -1,6 +1,5 @@
-import discord, Discord as _D, common as _c
+import discord, Discord as _D, common as _c, TeacherFunc as Do
 from discord.ext import commands
-import TeacherFunc as Do
 class Teacher(discord.Client)
     def __init__(self, devoirhandler):
         super().__init__(self)
@@ -22,29 +21,9 @@ class Teacher(discord.Client)
             return
         elif _D.is_command(message.content):
             token_s = _D.token_split(message.content[1:])
-            if token_s[0][0] == 'ping':
-                Do.ping(self, message, token_s)
-            elif token_s[0][0] == 'print':
-                Do._print(self, message, token_s)
-            elif token_s[0][0] == 'echo':
-                Do.echo(self, message, token_s)
-            elif token_s[0][0] == 'new-dev':
-                Do.new_dev(self, message, token_s)
-            elif token_s[0][0] == 'change-dev':
-                Do.change_dev(self, message, token_s)
-            elif token_s[0][0] == 'del-dev':
-                Do.del_dev(self, message, token_s)
-            elif token_s[0][0] == 'get-dev':
-                Do.get_dev(self, message, token_s)
-            elif token_s[0][0] == 'new-cours':
-                Do.new_cours(self, message, token_s)
-            elif token_s[0][0] == 'change-cours':
-                Do.change_cours(self, message, token_s)
-            elif token_s[0][0] == 'del-cours':
-                Do.del_cours(self, message, token_s)
-            elif token_s[0][0] == 'get-cours':
-                Do.get_cours(self, message, token_s)
-            else:
+            try:
+                Do.commdict[token_s[0][0]](self, message, token_s)
+            except KeyError:
                 Do.__(self, message, token_s)
 
 
