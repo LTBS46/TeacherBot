@@ -3,8 +3,9 @@ from discord.ext import commands
 
 
 class Teacher(discord.Client)
-    def __init__(self):
+    def __init__(self, devoirhandler):
         super().__init__(self)
+        self.devoirhandler = devoirhandler
         await self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
 

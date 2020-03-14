@@ -1,5 +1,5 @@
 def is_command(string):
-    return string[0]=='$'
+    return string[0] == '$'
 
 def token_split(string):
     rv = []
