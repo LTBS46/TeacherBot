@@ -18,8 +18,14 @@
     "email":"zyvon38@gmail.com"
   },
   "contributors":[
-    {"Name":"Corzeus"},{"Name":"Babouche007"},{"Name":"Raxyl38"}
-  ]
+    {
+      "Name":"Corzeus"
+    },{
+      "Name":"Babouche007"
+    },{
+      "Name":"Raxyl38"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LTBS46/TeacherBot/issues"

@@ -37,5 +37,7 @@ def token_split(string):
             char_s += c
 
     rv.append((char_s, "l" if literal else "t"))
-    char_s = ''
+    for i in range(len(rv)):
+        while rv[i][0] == '':
+            rv = rv[:i] + rv[i + 1:]
     return rv

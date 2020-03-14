@@ -9,7 +9,7 @@ class Devoirs():
 
     def save(self,matiere, nom, content):
             path_dir = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
-            path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
+            path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
             if not _os.path.exists(path_dir):
@@ -27,7 +27,7 @@ class Devoirs():
                 self.save(mat, dev, self.donnees[mat][dev])
 
     def load(self,nom,matiere = None):
-        path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
+        path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
         if not matiere in self.donnees:
             self.donnees[matiere] = {}
         try:
@@ -39,7 +39,7 @@ class Devoirs():
 
     def load_all(self):
         path = "{0}{1}data".format(_os.pardir,_os.sep)
-        for pathdirs, dirs, files in os.walk(path):
+        for pathdirs, dirs, files in _os.walk(path):
             if pathdirs != path:
                 for i in files:
                     matiere = pathdirs.split(_os.sep)[1]
