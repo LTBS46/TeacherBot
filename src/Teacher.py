@@ -14,6 +14,10 @@ class Teacher(discord.Client)
             return
         elif _D.is_command(message.content):
             token_s = _D.token_split(message.content[1:])
+            if token_s[0] == 'ping':
+                message.channel.send('pong')
+            else:
+                message.channel.send('unknown command : {0}'.format(message.content))
 
 #    async def on_raw_reaction_add
 
