@@ -6,10 +6,16 @@ T34CH3R_8OT
 
 ## Directory
 
-root
-│
-├src
-│
-└data
-  │
-  └int
+"root"
+|
+|-"package.json"
+|
+|-"src"
+|   |
+|   |-"__main__.py"
+|   |
+|   |-
+|
+|-"data"
+    |
+    |-"int"
