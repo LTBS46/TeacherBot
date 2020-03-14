@@ -2,6 +2,10 @@ import urllib as _url, json as _js, os as _os, enum as _en
 
 @_en.unique
 class Matiere(_en.Enum):
+    def _generate_next_value_(name, start, count, last_values):
+        return name
+    def __str__(self):
+        return repr(self)[1+str(type(self))[7:-2]:]
     MATHS = _en.auto()
     PHILO = _en.auto()
     HIST = _en.auto()

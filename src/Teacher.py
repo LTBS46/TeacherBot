@@ -32,6 +32,9 @@ class Teacher(discord.Client)
                 for c in token_s[1:]:
                     str += c[0]
                 await message.channel.send(str)
+            elif token_s[0][0] == 'echo':
+                await message.channel.trigger_typing()
+                await message.channel.send(message.content[5:])
             elif token_s[0][0] == 'new-dev':
                 pass
             elif token_s[0][0] == 'change-dev':
