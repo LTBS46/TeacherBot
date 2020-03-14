@@ -8,33 +8,35 @@ class Devoirs():
         self.donnees = {}
 
     def save(self,matiere, nom, content):
-            path_dir = "Data/"+matiere
-            path = "Data/"+matiere+"/"+nom+".txt"
+            path_dir = "Data/" + matiere
+            path = "Data/ "+ matiere + "/" + nom + ".txt"
 
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
             if not _os.path.exists(path_dir):
                 _os.makedirs(path_dir)
 
-            with open(path, "w") as f:
-                f.write(content)
-                self.donnees[matiere][nom] = content
+            f = open(path, "w")
+            f.write(content)
+            self.donnees[matiere][nom] = content
+            f.close()
 
     def save_all(self):
         for mat in self.donnees.keys():
             for dev in self.donnees[mat].keys():
                 self.save(mat, dev, self.donnees[mat][dev])
 
-    def load(self,nom,matiere= None):
-        path_dir = "Data/"+matiere
-        path = "Data/"+matiere+"/"+nom+".txt"
+    def load(self,nom,matiere = None):
+        path_dir = "Data/" + matiere
+        path = "Data/" + matiere + "/" + nom + ".txt"
         if not matiere in self.donnees:
             self.donnees[matiere] = {}
         if not _os.path.exists(path_dir):
             return "path doesn't exist"
 
-        with open(path, "r") as f:
-            self.donnees[matiere][nom] = f.read()
+        f = open(path, "r")
+        self.donnees[matiere][nom] = f.read()
+        f.close()
         return self.donnees[matiere][nom]
 
     def load_all(self):
@@ -43,10 +45,11 @@ class Devoirs():
             if pathdirs != "Data":
                 for i in files:
                     matiere = pathdirs.split("\\")[1]
-                    path_f = pathdirs+"/"+i
+                    path_f = pathdirs + "/" + i
                     nom = i.split(".")[0]
-                    with open(path_f, "r") as f:
-                        self.donnees[matiere][nom] = f.read()
+                    f = open(path_f, "r")
+                    self.donnees[matiere][nom] = f.read()
+                    f.close()
 
             else:
                 for i in dirs:
@@ -55,6 +58,5 @@ class Devoirs():
         return self.donnees
 
 C = Devoirs()
-
 
 del _os
