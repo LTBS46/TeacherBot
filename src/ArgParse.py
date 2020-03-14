@@ -1,8 +1,10 @@
 import sys as _sys, common as _c
 
+
 class StatusArg:
     def __init__(self):
         self.test = False
+
 
 def parsearg(globvar):
     globvar['status'] = StatusArg();
