@@ -1,13 +1,6 @@
-def __(b, message, token_s):
-    await message.channel.trigger_typing()
-    await message.channel.send('unknown command : {0}'.format(message.content))
+def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
 
-def _print(b, message, token_s):
-    await message.channel.trigger_typing()
-    str = ''
-    for c in token_s[1:]:
-        str += c[0]
-    await message.channel.send(str)
+def _print(b, message, token_s):await message.channel.send(''.join([c[0]for c in token_s[1:]]))
 
 def change_cours(b, message, token_s):pass
 
@@ -21,9 +14,7 @@ def get_cours(b, message, token_s):pass
 
 def get_dev(b, message, token_s):pass
 
-def echo(b, message, token_s):
-    await message.channel.trigger_typing()
-    await message.channel.send(message.content[5:])
+def echo(b, message, token_s):await message.channel.send(message.content[5:])
 
 def help(b, message, token_s):pass
 
@@ -31,9 +22,7 @@ def new_dev(b, message, token_s):pass
 
 def new_cours(b, message, token_s):pass
 
-def ping(b, message, token_s):
-    await message.channel.trigger_typing()
-    await message.channel.send('pong')
+def ping(b, message, token_s):await message.channel.send('pong')
 
 
 commdict = {

@@ -20,6 +20,7 @@ class Teacher(discord.Client)
         if (message.author == self.user):
             return
         elif _D.is_command(message.content):
+            await message.channel.trigger_typing()
             token_s = _D.token_split(message.content[1:])
             try:
                 Do.commdict[token_s[0][0]](self, message, token_s)
