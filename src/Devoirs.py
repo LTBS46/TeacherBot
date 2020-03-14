@@ -8,7 +8,7 @@ class Devoirs():
         self.donnees = {}
 
     def save(self,matiere, nom, content):
-            path_dir = "Data/" + matiere
+            path_dir = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
             path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
@@ -28,7 +28,6 @@ class Devoirs():
 
     def load(self,nom,matiere = None):
         path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
-#        path = _os.pardir + _os.sep + "data" + _os.sep + matiere + _os.sep + nom + ".txt"
         if not matiere in self.donnees:
             self.donnees[matiere] = {}
         try:
@@ -39,9 +38,9 @@ class Devoirs():
         return self.donnees[matiere][nom]
 
     def load_all(self):
-        path = "../data"
+        path = "{0}{1}data".format(_os.pardir,_os.sep)
         for pathdirs, dirs, files in os.walk(path):
-            if pathdirs != "../data":
+            if pathdirs != path:
                 for i in files:
                     matiere = pathdirs.split(_os.sep)[1]
                     path_f = pathdirs + _os.sep + i
@@ -57,7 +56,5 @@ class Devoirs():
                     if not i in self.donnees:
                         self.donnees[i] = {}
         return self.donnees
-
-C = Devoirs()
 
 del _os
