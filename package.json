@@ -13,7 +13,13 @@
   "keywords": [
     "bot"
   ],
-  "author": "LTBS46, Corzeus, Babouche007, Raxyl38",
+  "author": {
+    "name":"LTBS46",
+    "email":"zyvon38@gmail.com"
+  },
+  "contributors":[
+    {"Name":"Corzeus"},{"Name":"Babouche007"},{"Name":"Raxyl38"}
+  ]
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LTBS46/TeacherBot/issues"
