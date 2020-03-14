@@ -1,4 +1,24 @@
-import urllib as _url, json as _js, os as _os
+import urllib as _url, json as _js, os as _os, enum as _en
+
+@_en.unique
+class Matiere(_en.Enum):
+    MATHS = _en.auto()
+    PHILO = _en.auto()
+    HIST = _en.auto()
+    GEO = _en.auto()
+    SPE_MATHS = _en.auto()
+    PHYSIQUE = _en.auto()
+    SPE_PHYSIQUE = _en.auto()
+    ISN = _en.auto()
+    ANGLAIS_G1 = _en.auto()
+    ANGLAIS_G2 = _en.auto()
+    ESPAGNOL = _en.auto()
+    ITALIEN = _en.auto()
+    ALLEMAND = _en.auto()
+    SI = _en.auto()
+    PROJET = _en.auto()
+
+
 
 def get_string_from_url(url):
     str = ''
@@ -74,4 +94,4 @@ def get_master_channel():
         f.close()
     return rv
 
-del _url, _js, _os
+del _url, _js, _os, _en
