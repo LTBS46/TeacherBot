@@ -22,7 +22,7 @@ class Teacher(discord.Client)
 
     @self.event()
     async def on_raw_reaction_add(payload):
-        if(payload.message_id == 688342534988365825):
+        if(payload.message_id == 688488103253508099):
             try:
                 role,member,emoji_name = get_role_member(payload)
                 await member.add_roles(role)
@@ -33,7 +33,7 @@ class Teacher(discord.Client)
 
     @self.event()
     async def on_raw_reaction_remove(payload):
-        if(payload.message_id == 688342534988365825):
+        if(payload.message_id == 688493645351092285):
             try:
                 role,member,emoji_name = get_role_member(payload)
                 await member.remove_roles(role)
