@@ -1,7 +1,6 @@
 import discord, Discord as _D, common as _c
 from discord.ext import commands
-
-
+import TeacherFunc as Do
 class Teacher(discord.Client)
     def __init__(self, devoirhandler):
         super().__init__(self)
@@ -24,36 +23,29 @@ class Teacher(discord.Client)
         elif _D.is_command(message.content):
             token_s = _D.token_split(message.content[1:])
             if token_s[0][0] == 'ping':
-                await message.channel.trigger_typing()
-                await message.channel.send('pong')
+                Do.ping(self, message, token_s)
             elif token_s[0][0] == 'print':
-                await message.channel.trigger_typing()
-                str = ''
-                for c in token_s[1:]:
-                    str += c[0]
-                await message.channel.send(str)
+                Do._print(self, message, token_s)
             elif token_s[0][0] == 'echo':
-                await message.channel.trigger_typing()
-                await message.channel.send(message.content[5:])
+                Do.echo(self, message, token_s)
             elif token_s[0][0] == 'new-dev':
-                pass
+                Do.new_dev(self, message, token_s)
             elif token_s[0][0] == 'change-dev':
-                pass
+                Do.change_dev(self, message, token_s)
             elif token_s[0][0] == 'del-dev':
-                pass
+                Do.del_dev(self, message, token_s)
             elif token_s[0][0] == 'get-dev':
-                pass
+                Do.get_dev(self, message, token_s)
             elif token_s[0][0] == 'new-cours':
-                pass
+                Do.new_cours(self, message, token_s)
             elif token_s[0][0] == 'change-cours':
-                pass
+                Do.change_cours(self, message, token_s)
             elif token_s[0][0] == 'del-cours':
-                pass
+                Do.del_cours(self, message, token_s)
             elif token_s[0][0] == 'get-cours':
-                pass
+                Do.get_cours(self, message, token_s)
             else:
-                await message.channel.trigger_typing()
-                await message.channel.send('unknown command : {0}'.format(message.content))
+                Do.__(self, message, token_s)
 
 
-del discord, commands, _D
+del discord, commands, _D, Do, _c
