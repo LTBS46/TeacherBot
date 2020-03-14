@@ -9,17 +9,17 @@ class Devoirs():
 
     def save(self,matiere, nom, content):
             path_dir = "Data/" + matiere
-            path = "Data/ "+ matiere + "/" + nom + ".txt"
-
+            path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
             if not _os.path.exists(path_dir):
                 _os.makedirs(path_dir)
-
-            f = open(path, "w")
-            f.write(content)
+            try:
+                f = open(path, "w")
+                f.write(content)
+            finally:
+                f.close()
             self.donnees[matiere][nom] = content
-            f.close()
 
     def save_all(self):
         for mat in self.donnees.keys():
@@ -27,29 +27,30 @@ class Devoirs():
                 self.save(mat, dev, self.donnees[mat][dev])
 
     def load(self,nom,matiere = None):
-        path_dir = "Data/" + matiere
-        path = "Data/" + matiere + "/" + nom + ".txt"
+        path = "{0}{1}data{1}{2}{1}{3}.txt".format(_os.pardir, _os.sep, matiere, nom)
+#        path = _os.pardir + _os.sep + "data" + _os.sep + matiere + _os.sep + nom + ".txt"
         if not matiere in self.donnees:
             self.donnees[matiere] = {}
-        if not _os.path.exists(path_dir):
-            return "path doesn't exist"
-
-        f = open(path, "r")
-        self.donnees[matiere][nom] = f.read()
-        f.close()
+        try:
+            f = open(path, "r")
+            self.donnees[matiere][nom] = f.read()
+        finally:
+            f.close()
         return self.donnees[matiere][nom]
 
     def load_all(self):
-        path = "Data"
+        path = "../data"
         for pathdirs, dirs, files in os.walk(path):
-            if pathdirs != "Data":
+            if pathdirs != "../data":
                 for i in files:
-                    matiere = pathdirs.split("\\")[1]
-                    path_f = pathdirs + "/" + i
+                    matiere = pathdirs.split(_os.sep)[1]
+                    path_f = pathdirs + _os.sep + i
                     nom = i.split(".")[0]
-                    f = open(path_f, "r")
-                    self.donnees[matiere][nom] = f.read()
-                    f.close()
+                    try:
+                        f = open(path_f, "r")
+                        self.donnees[matiere][nom] = f.read()
+                    finally:
+                        f.close()
 
             else:
                 for i in dirs:
