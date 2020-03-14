@@ -5,20 +5,37 @@ def token_split(string):
     rv = []
     char_s = ''
     breaktime = 0
-    literal = False
+    literal = 0
     for c in string:
         if breaktime :
             breaktime -= 1
-            continue
         elif literal:
-            char_s += c
+            if literal == 2 and c == "'":
+                literal = 0
+                rv.append((char_s, 'l'))
+                char_s = ''
+            elif literal == 1 and c == '"':
+                literal = 1
+                rv.append((char_s, 'l'))
+                char_s = ''
+            else:
+                char_s += c
         elif c == '\n':
-            rv.append(char_s)
+            rv.append((char_s, 't'))
+            char_s = ''
         elif c == '\t':
-            rv.append(char_s)
+            rv.append((char_s, 't'))
+            char_s = ''
         elif c == ' ':
-            rv.append(char_s)
+            rv.append((char_s, 't'))
+            char_s = ''
+        elif c == '"':
+            literal = 1
+        elif c == "'":
+            literal = 2
         else:
             char_s += c
-    rv.append(char_s)
+
+    rv.append((char_s, "l" if literal else "t"))
+    char_s = ''
     return rv

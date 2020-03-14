@@ -12,8 +12,8 @@ class Teacher(discord.Client)
     async def on_message(self, message)
         if (message.author == self.user):
             return
-        if _D.is_command(message.content):
-            pass
+        elif _D.is_command(message.content):
+            token_s = _D.token_split(message.content[1:])
 
 #    async def on_raw_reaction_add
 
