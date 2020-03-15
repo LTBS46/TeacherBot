@@ -1,3 +1,5 @@
+from Cours import *
+
 def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
 
 def ___h(b, message, token_s):pass
@@ -42,7 +44,13 @@ def new_dev(b, message, token_s):pass
 
 def new_dev_h(b, message, token_s):pass
 
-def new_cours(b, message, token_s):pass
+def new_cours(b, message, token_s):
+    #récup les fichiers du message et les enregistrer au bon endroit
+    matiere = token_s[0][0]
+    nom = token_s[1][0]
+    content = message.attachments
+
+    Cours_obj.save(matiere, nom, content)
 
 def new_cours_h(b, message, token_s):pass
 
@@ -50,6 +58,8 @@ def ping(b, message, token_s):await message.channel.send('pong')
 
 def ping_h(b, message, token_s):await message.channel.send('pong')
 
+
+Cours_obj = Cours()
 
 commdict = {
     'change-dev':change_dev,
