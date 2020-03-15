@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/LTBS46/TeacherBot/issues"
   },
+  "dependencies":{
+    
+  },
   "homepage": "https://github.com/LTBS46/TeacherBot#readme"
 }

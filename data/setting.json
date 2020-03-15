@@ -1,7 +1,79 @@
 {
-  "main_guild":687779265093435420,
-  "main_channel":687940090454081601
-  "token": {
-    "discord":"Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
-  }
+  "id": "687779265093435420",
+  "name": "LGM-TS5",
+  "instant_invite": "https://discordapp.com/invite/TzEf4K",
+  "channels": [
+    {
+      "id": "688496155713339493",
+      "name": "espagnol-vocal",
+      "position": 18
+    }
+  ],
+  "members": [
+    {
+      "id": "0",
+      "username": "Admin-LGM-TS5",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "online",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/DB75yaNttYOfFhLb7muUH0h6LenZy6E1YilsJlyDww4/41inH-sZucFkyE65vFdEFNY7wADvyrxwAeIpR_CxL-3gjMDL4ZUHmxgPBEdBGh42xe9j50WsTU2t34p1jSA"
+    }, {
+      "id": "1",
+      "username": "Alexi Azibert",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "online",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/bnMg-b5PTbSDpWXPP8g2Wdbf0MeoY8El8FVyLsdsamY/zftaApzU97HydZOsHOYGTQo_npAHmCU4h-uYP86Oi8cwOo3rVBIJetPUM_Qduy0LE1i8glhx21_cUV1JbQGynD6mjPwpojtcSth2677duQR7BNkX-fDgnwk9KmI5QMnKJU4TCH8RNTMrcw"
+    }, {
+      "id": "2",
+      "username": "Arthur Charbonnier",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "idle",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/MYPklUCXTZmIOEvZQ1f_04YkAtFM16w8pHK_HmHbgDo/LDRWwmp2Hmkbx4aVnxXf6TQlmJEgtL5ArM1r2dUrGmPUxQdAG2s-W8qar2RDUBKHrj_x_lslerY4iGAUiyH1VobXb9ehKF07sqS2YZk06tDq0bIazgwmpiRwVs9Ws2TXGCXH5Um9SKJxLQ"
+    }, {
+      "id": "3",
+      "username": "Baptiste Saez",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "idle",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/DUHSDFB3gI-S6jy1qVdQ27QAwG0fZ1FslK5eLpqOuuU/yZFBW0YVd9C6g02gtDipfM1pDaRo5hL0jWy6uM4FokUPTXBl7ZIZ2jRe0ISvZkBHyZFZAXKDN-6IZQv9G29WdisZTHepWr1g_wnXcujFjuMTeiTZ2nkUU9VldLRSnjiV0ayMA53BwyASOg"
+    }, {
+      "id": "4",
+      "username": "Manuel Blanco",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "idle",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/3f33f3ggzhcevx0D_Fgh-Xt-1PVkBFLpmCHiuniDH38/hg-kTwAgft6_pczNxDi-zU-01txyAxfCzJRedRabljsY4g-qdsywssdNHAGvSkl13DFGgvCchPQahSZzSKY"
+    }, {
+      "id": "5",
+      "username": "Phil\u00e9as Thibault",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "idle",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/UCmRaVVDiCu-vaqsdj7nttwrnJPzftXPlV-W54a4a3Y/PYvJ-7bsq8AwlLAvjCaHmZ4AIUjm2iC0RMpbJY2YJRwPIURWrhM4cuwJfiaJFOdNKhilww9QkS3rrhK5AYWU--35N6n9Bu0MzkTzzonkdMCq3KxKwGGPnJjlDi5YYfK--LvpUTXatTOiew"
+    }, {
+      "id": "6",
+      "username": "Rapha\u00ebl Peyre",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "idle",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/ytr8cZFYoyeCxuWJ4CzXkTITb8NAvslMVVSTU7Hogi4/JDpMuef7Jzl3rj-9h_2Mlv5x53Glx1OTDoEc9PC7g4SrvmRpsOqp0AhIc-i2uYySf41faQUVUXkmVURdaODR8HXvhyT-pqkeCfVox6fEbnW0MyT8-Q7xmnd5CHiuDkiHvbLRxVEOXB5vwQ"
+    }, {
+      "id": "7",
+      "username": "Romain Marie",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "online",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/9982d10dgAKc9L9EcYzffX5C9LVUeeBsPmIDoPZLtU0/1FSD_eZM_S8yRdOsIRgXEsJRtTC2T4WFnJZq76MzaEDB2-NIbXG8WgPHvelpNh8D2AR53hzqyVAUcG3OaH1OrCDmEj-5XGQcAsD1W5wQC9a4fxc-UDwI3-9E6B1JB-x7knv6d-hrsQaWbw"
+    }, {
+      "id": "8",
+      "username": "R\u00e9mi Laramas",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "online",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/nKmSYbV06SkbyaZrFZ0b-IZ9Vdw4rmop-rqDQ9qE4KY/D9EeuqM0UP6-OflGHsfetN0dUa1G2MjYdN7ouLeGMhNsHvXnJZXra-R1hWykv1ALpxPXcW2Y8GX4mIKDLM4jtGKgDQHLN0N6TNeWynnQBimhxnYdso1GqyL_nCpjvyY2tSE13r9OEwehpg"
+    }
+  ],
+  "presence_count": 10
 }
