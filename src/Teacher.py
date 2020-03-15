@@ -14,8 +14,8 @@ class Teacher(discord.Client)
         g = await get_guild(_c.get_master_guild())
         c = await g.get_channel(_c.get_master_channel())
         await c.trigger_typing()
-        await c.send('logged as {0}'.format(self.user))
-        print('logged as {0}'.format(self.user))
+        await c.send('connecté comme {0}'.format(self.user))
+        print('connecté comme {0}'.format(self.user))
 
     @self.event()
     async def on_message(self, message):
@@ -32,25 +32,25 @@ class Teacher(discord.Client)
                 for c in token_s[1:]:
                     str += c[0]
                 await message.channel.send(str)
-            elif token_s[0][0] == 'new-dev':
+            elif token_s[0][0] == 'nouveau-dev':
                 pass
             elif token_s[0][0] == 'change-dev':
                 pass
             elif token_s[0][0] == 'del-dev':
                 pass
-            elif token_s[0][0] == 'get-dev':
+            elif token_s[0][0] == 'avoir-dev':
                 pass
-            elif token_s[0][0] == 'new-cours':
+            elif token_s[0][0] == 'nouveau-cours':
                 pass
             elif token_s[0][0] == 'change-cours':
                 pass
-            elif token_s[0][0] == 'del-cours':
+            elif token_s[0][0] == 'suppr-cours':
                 pass
-            elif token_s[0][0] == 'get-cours':
+            elif token_s[0][0] == 'avoir-cours':
                 pass
             else:
                 await message.channel.trigger_typing()
-                await message.channel.send('unknown command : {0}'.format(message.content))
+                await message.channel.send('je ne comprend pas la commande : {0}'.format(message.content))
 
 
 del discord, commands, _D
