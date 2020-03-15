@@ -1,4 +1,4 @@
-import urllib as _url, json as _js, os as _os, enum as _en
+import urllib as _url, json as _js, os as _os, enum as _en, errno, as _err
 
 class BaseEnum(_en.Enum):
     def __repr__(self):
@@ -50,7 +50,7 @@ def get_new_compteur_id(string):
         f.close()
         f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "w")
         f.write(str(rv + 1))
-    except IOError:
+    except (OSError, IOError) as e:
         f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "w")
         f.write('0')
     finally:
@@ -73,7 +73,7 @@ def get_token():
         str = f.read()
         obj = _js.loads(str)
         rv = obj["token"]["discord"]
-    except IOError:
+    except (OSError, IOError) as e:
         print("file not found or can't be read")
     finally:
         f.close()
@@ -86,7 +86,7 @@ def get_master_guild():
         str = f.read()
         obj = _js.loads(str)
         rv = obj["main_guild"]
-    except IOError:
+    except (OSError, IOError) as e:
         print("file not found or can't be read")
     finally:
         f.close()
@@ -99,10 +99,14 @@ def get_master_channel():
         str = f.read()
         obj = _js.loads(str)
         rv = obj["main_channel"]
-    except IOError:
+    except (OSError, IOError) as e:
         print("file not found or can't be read")
     finally:
         f.close()
     return rv
 
-del _url, _js, _os, _en
+def get_widget_data():
+    return _js.loads(get_string_from_url("https://discordapp.com/api/guilds/687779265093435420/widget.json"))
+
+
+del _url, _js, _os, _en, _err
