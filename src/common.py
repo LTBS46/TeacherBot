@@ -114,6 +114,3 @@ def get_master_channel():
 def get_widget_data():
     import json as _js
     return _js.loads(get_string_from_url("https://discordapp.com/api/guilds/687779265093435420/widget.json"))
-
-
-del _url, _js, _os, _en, _err

@@ -19,5 +19,3 @@ def get_who_indicator():
         code_list.append(i[u'IndicatorCode'])
         name_list.append(i[u'IndicatorName'])
     return (code_list, name_list)
-
-del _js, _c

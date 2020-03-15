@@ -11,5 +11,3 @@ def parsearg(globvar):
         else:
             print("unknown argument : " + arg)
     return None
-
-del _c

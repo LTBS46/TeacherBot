@@ -68,6 +68,3 @@ class Teacher(discord.Client):
             return role, member, emoji_name
         except:
             pass
-
-
-del discord, commands, _D, Do, _c

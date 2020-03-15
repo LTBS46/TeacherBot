@@ -56,6 +56,3 @@ class Devoirs():
                     if not i in self.donnees:
                         self.donnees[i] = {}
         return self.donnees
-
-
-del _os
