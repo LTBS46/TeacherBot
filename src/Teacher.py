@@ -47,15 +47,6 @@ class Teacher(discord.Client)
         elif _D.is_command(message.content):
             await message.channel.trigger_typing()
             token_s = _D.token_split(message.content[1:])
-            if token_s[0][0] == 'ping':
-                await message.channel.trigger_typing()
-                await message.channel.send('pong')
-            elif token_s[0][0] == 'print':
-                await message.channel.trigger_typing()
-                str = ''
-                for c in token_s[1:]:
-                    str += c[0]
-                await message.channel.send(str)
             try:
                 Do.commdict[token_s[0][0]](self, message, token_s)
             except KeyError:
