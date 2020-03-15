@@ -31,7 +31,6 @@ class Matiere(BaseEnum):
     PROJET = _en.auto()
 
 
-
 def get_string_from_url(url):
     str = ''
     try:
