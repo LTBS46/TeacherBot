@@ -38,7 +38,7 @@ class Teacher(discord.Client):
 #            tmp["f"].write(_c.get_widget_data())
 #        finally:
 #            tmp["f"].close()
-        self.main_channel = g.get_channel(687940090454081601)
+        self.main_channel = self.get_channel(687940090454081601)
         await self.main_channel.trigger_typing()
         await self.main_channel.send('connecté comme {0}'.format(self.user))
         print('connecté comme {0}'.format(self.user))
@@ -49,11 +49,11 @@ class Teacher(discord.Client):
             return
         elif _D.is_command(message.content):
             await message.channel.trigger_typing()
-            token_s = _D.token_split(message.content[1:])
             try:
+                token_s = _D.token_split(message.content[1:])
                 Do.commdict[token_s[0][0]](self, message, token_s)
             except KeyError:
-                Do.__(self, message, token_s)
+                await Do.__(self, message)
 
     def get_role_member(self, payload):
         guild_id = payload.guild_id

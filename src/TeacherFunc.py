@@ -30,7 +30,7 @@ def commwrap(func):
     return func
 
 @commwrap
-async def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
+async def __(b, message):await message.channel.send('unknown command : {0}'.format(message.content))
 
 @helpwrap
 async def ___h(b, message, token_s):pass
