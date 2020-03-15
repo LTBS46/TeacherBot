@@ -38,10 +38,9 @@ class Teacher(discord.Client):
 #            tmp["f"].write(_c.get_widget_data())
 #        finally:
 #            tmp["f"].close()
-        g = await self.get_guild(687779265093435420)
-        c = await g.get_channel(_c.get_master_channel())
-        await c.trigger_typing()
-        await c.send('connecté comme {0}'.format(self.user))
+        self.main_channel = g.get_channel(687940090454081601)
+        await self.main_channel.trigger_typing()
+        await self.main_channel.send('connecté comme {0}'.format(self.user))
         print('connecté comme {0}'.format(self.user))
 
     #@self.event()
