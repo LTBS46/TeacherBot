@@ -1,48 +1,59 @@
 from Cours import *
 
-def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
+async def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
 
-def ___h(b, message, token_s):pass
+async def ___h(b, message, token_s):pass
 
-def _print(b, message, token_s):await message.channel.send(''.join([c[0]for c in token_s[1:]]))
+async def _print(b, message, token_s):await message.channel.send(''.join([c[0]for c in token_s[1:]]))
 
-def _print_h(b, message, token_s):pass
+async def _print_h(b, message, token_s):pass
 
-def change_cours(b, message, token_s):pass
+async def change_cours(b, message, token_s):pass
 
-def change_cours_h(b, message, token_s):pass
+async def change_cours_h(b, message, token_s):pass
 
-def change_dev_h(b, message, token_s):pass
+async def change_dev_h(b, message, token_s):pass
 
-def change_dev_h(b, message, token_s):pass
+async def change_dev_h(b, message, token_s):pass
 
-def del_cours(b, message, token_s):pass
+async def del_cours(b, message, token_s):pass
 
-def del_cours_h(b, message, token_s):pass
+async def del_cours_h(b, message, token_s):pass
 
-def del_dev(b, message, token_s):pass
+async def del_dev(b, message, token_s):pass
 
-def del_dev_h(b, message, token_s):pass
+async def del_dev_h(b, message, token_s):pass
 
-def get_cours_h(b, message, token_s):pass
+async def get_cours_h(b, message, token_s):pass
 
-def get_cours(b, message, token_s):pass
+async def get_cours(b, message, token_s):pass
 
-def get_dev_h(b, message, token_s):pass
+async def get_dev_h(b, message, token_s):pass
 
-def get_dev_h(b, message, token_s):pass
+async def get_dev_h(b, message, token_s):pass
 
-def echo(b, message, token_s):await message.channel.send(message.content[5:])
+async def echo(b, message, token_s):await message.channel.send(message.content[5:])
 
-def echo_h(b, message, token_s):await message.channel.send(message.content[5:])
+async def echo_h(b, message, token_s):await message.channel.send(message.content[5:])
 
-def help(b, message, token_s):pass
+async def help(b, message, token_s):
+    if len(token_s) == 2:
+        try:
+            helphandler[token_s[1][0]](b, message, token_s)
+        except KeyError:
+            pass
+    elif len(token_s) == 1:
+        #help normale
+        pass
+    else:
+        #illegal argument number
+        pass
 
-def help_h(b, message, token_s):pass
+async def help_h(b, message, token_s):pass
 
-def new_dev(b, message, token_s):pass
+async def new_dev(b, message, token_s):pass
 
-def new_dev_h(b, message, token_s):pass
+async def new_dev_h(b, message, token_s):pass
 
 def new_cours(b, message, token_s):
     #récup les fichiers du message et les enregistrer au bon endroit
@@ -52,11 +63,11 @@ def new_cours(b, message, token_s):
 
     Cours_obj.save(matiere, nom, content)
 
-def new_cours_h(b, message, token_s):pass
+async def new_cours_h(b, message, token_s):pass
 
-def ping(b, message, token_s):await message.channel.send('pong')
+async def ping(b, message, token_s):await message.channel.send('pong')
 
-def ping_h(b, message, token_s):await message.channel.send('pong')
+async def ping_h(b, message, token_s):await message.channel.send('pong')
 
 
 Cours_obj = Cours()
