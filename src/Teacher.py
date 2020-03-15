@@ -15,7 +15,7 @@ class Teacher(discord.Client)
     async def on_raw_reaction_add(payload):
         if(payload.message_id == 688488103253508099):
             try:
-                role,member,emoji_name = get_role_member(payload)
+                role,member,emoji_name = self.get_role_member(payload)
                 await member.add_roles(role)
                 await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !"%(emoji_name))
             except:
@@ -25,7 +25,7 @@ class Teacher(discord.Client)
     async def on_raw_reaction_remove(payload):
         if(payload.message_id == 688493645351092285):
             try:
-                role,member,emoji_name = get_role_member(payload)
+                role,member,emoji_name = self.get_role_member(payload)
                 await member.remove_roles(role)
                 cdc = ":x: Tu ne peux maintenant plus accèder aux salons " + emoji_name + " !"
                 await member.send(cdc)
