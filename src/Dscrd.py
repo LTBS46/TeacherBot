@@ -41,7 +41,9 @@ def token_split(string):
             char_s += c
 
     rv.append([char_s, "l" if literal else "t"])
+    print(rv)
+    rv2 = rv
     for i in range(len(rv)):
-        while rv[i][0] == '' and i < len(rv):
-            rv = rv[:i] + rv[i + 1:]
-    return rv
+        if rv[i][0] == "":
+            del rv2[i]
+    return rv2
