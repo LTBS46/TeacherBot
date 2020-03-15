@@ -1,7 +1,19 @@
 import urllib as _url, json as _js, os as _os, enum as _en
 
+class BaseEnum(_en.Enum):
+    def __repr__(self):
+        return '<%s.%s>' % (self.__class__.__name__, self.name)
+#    def __new__(cls):
+#        value = len(cls.__members__) + 1
+#        obj = object.__new__(cls)
+#        obj._value_ = value
+#        return obj
+    def _generate_next_value_(name, start, count, last_values):
+        return name
+
+
 @_en.unique
-class Matiere(_en.Enum):
+class Matiere(BaseEnum):
     MATHS = _en.auto()
     PHILO = _en.auto()
     HIST = _en.auto()

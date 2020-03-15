@@ -1,13 +1,36 @@
-import discord, Discord as _D, common as _c
+import discord, Discord as _D, common as _c, TeacherFunc as Do
 from discord.ext import commands
 
 
+
+
 class Teacher(discord.Client)
+
     def __init__(self, devoirhandler):
         super().__init__(self)
         self.devoirhandler = devoirhandler
         await self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
+    @self.event()
+    async def on_raw_reaction_add(payload):
+        if(payload.message_id == 688488103253508099):
+            try:
+                role,member,emoji_name = get_role_member(payload)
+                await member.add_roles(role)
+                await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !"%(emoji_name))
+            except:
+                await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
+
+    @self.event()
+    async def on_raw_reaction_remove(payload):
+        if(payload.message_id == 688493645351092285):
+            try:
+                role,member,emoji_name = get_role_member(payload)
+                await member.remove_roles(role)
+                cdc = ":x: Tu ne peux maintenant plus accèder aux salons " + emoji_name + " !"
+                await member.send(cdc)
+            except:
+                pass
 
     @self.event()
     async def on_ready(self):
@@ -22,6 +45,7 @@ class Teacher(discord.Client)
         if (message.author == self.user):
             return
         elif _D.is_command(message.content):
+            await message.channel.trigger_typing()
             token_s = _D.token_split(message.content[1:])
             if token_s[0][0] == 'ping':
                 await message.channel.trigger_typing()
@@ -32,25 +56,21 @@ class Teacher(discord.Client)
                 for c in token_s[1:]:
                     str += c[0]
                 await message.channel.send(str)
-            elif token_s[0][0] == 'nouveau-dev':
-                pass
-            elif token_s[0][0] == 'change-dev':
-                pass
-            elif token_s[0][0] == 'del-dev':
-                pass
-            elif token_s[0][0] == 'avoir-dev':
-                pass
-            elif token_s[0][0] == 'nouveau-cours':
-                pass
-            elif token_s[0][0] == 'change-cours':
-                pass
-            elif token_s[0][0] == 'suppr-cours':
-                pass
-            elif token_s[0][0] == 'avoir-cours':
-                pass
-            else:
-                await message.channel.trigger_typing()
-                await message.channel.send('je ne comprend pas la commande : {0}'.format(message.content))
+            try:
+                Do.commdict[token_s[0][0]](self, message, token_s)
+            except KeyError:
+                Do.__(self, message, token_s)
+
+    def get_role_member(self, payload):
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id , self.guilds)
+        emoji_name = payload.emoji.name
+        try:
+            role = discord.utils.get(guild.roles , name=emoji_name)
+            member = discord.utils.find(lambda m : m.id == payload.user_id , guild.members)
+            return role,member,emoji_name
+        except:
+            pass
 
 
-del discord, commands, _D
+del discord, commands, _D, Do, _c
