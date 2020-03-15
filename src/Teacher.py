@@ -1,5 +1,5 @@
 import discord
-import Dscrd as _D, common as _c, TeacherFunc as Do
+import Dscrd as _D, common as _c, TeacherFunc as Do,os as _os
 from discord.ext import commands
 
 
@@ -32,15 +32,13 @@ class Teacher(discord.Client):
 
     #@self.event()
     async def on_ready(self):
-        import os as _os
-        import common as _c
-        tmp = {}
-        try:
-            tmp["f"] = open("{0}{1}data{1}settings.json".format(_os.pardir, _os.sep), "w")
-            tmp["f"].write(_c.get_widget_data())
-        finally:
-            tmp["f"].close()
-        g = await self.get_guild("687779265093435420")
+#        tmp = {}
+#        try:
+#            tmp["f"] = open("{0}{1}data{1}settings.json".format(_os.pardir, _os.sep), "w")
+#            tmp["f"].write(_c.get_widget_data())
+#        finally:
+#            tmp["f"].close()
+        g = await self.get_guild(687779265093435420)
         c = await g.get_channel(_c.get_master_channel())
         await c.trigger_typing()
         await c.send('connecté comme {0}'.format(self.user))

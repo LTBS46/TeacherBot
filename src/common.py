@@ -1,4 +1,4 @@
-import urllib as _url
+import urllib.request as _urlr
 import json as _js
 import enum as _en
 import errno as _err
@@ -36,12 +36,10 @@ class Matiere(BaseEnum):
 
 
 def get_string_from_url(url):
-    import urllib as _url
-    print(_url)
     str = ''
     tmp = {}
     try:
-        tmp["f"] = _url.urlopen(url)
+        tmp["f"] = _urlr.urlopen(url)
         str = tmp["f"].read()
     except Exception as e:
         print(e)
@@ -51,8 +49,6 @@ def get_string_from_url(url):
     return str
 
 def get_new_compteur_id(string):
-    import os as _os
-    import json as _js
     tmp = {}
     rv = 0
     try:
@@ -69,8 +65,6 @@ def get_new_compteur_id(string):
     return rv
 
 def get_compteur_id(string):
-    import os as _os
-    import json as _js
     tmp = {}
     rv = -1
     try:
@@ -84,8 +78,6 @@ def get_token():
     return"Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
 
 def get_master_guild():
-    import os as _os
-    import json as _js
     tmp = {}
     rv = None
     try:
@@ -98,8 +90,6 @@ def get_master_guild():
     return rv
 
 def get_master_channel():
-    import os as _os
-    import json as _js
     tmp = {}
     rv = None
     try:
@@ -112,5 +102,4 @@ def get_master_channel():
     return rv
 
 def get_widget_data():
-    import json as _js
-    return _js.loads(get_string_from_url("https://discordapp.com/api/guilds/687779265093435420/widget.json"))
+    return _js.loads(get_string_from_url("http://discordapp.com/api/guilds/687779265093435420/widget.json"))
