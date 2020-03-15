@@ -1,4 +1,5 @@
-import urllib as _url, json as _js, os as _os, enum as _en, errno, as _err
+import urllib as _url, json as _js, enum as _en, errno as _err
+import os as _os
 
 class BaseEnum(_en.Enum):
     def __repr__(self):
@@ -73,9 +74,9 @@ def get_token():
         str = f.read()
         obj = _js.loads(str)
         rv = obj["token"]["discord"]
+        f.close()
     except (OSError, IOError) as e:
         print("file not found or can't be read")
-    finally:
         f.close()
     return rv
 

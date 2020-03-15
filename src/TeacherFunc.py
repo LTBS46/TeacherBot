@@ -5,6 +5,7 @@ commdict = {}
 helphandler = {}
 
 def namef(name):
+    to_split = False
     while name[0] == '_':
         if len(name) == 1:
             return ''
@@ -13,7 +14,10 @@ def namef(name):
         name = name[:-2]
     for i in range(len(name)):
         if name[i] == '_':
-            name[i] = '-'
+            to_split = True
+    if to_split:
+        array = name.split("_")
+        name = "-".join(array)
     return name
 
 def helpwrap(func):
@@ -21,6 +25,7 @@ def helpwrap(func):
     return func
 
 def commwrap(func):
+    comm = {}
     comm[namef(func.__name__)] = func
     return func
 

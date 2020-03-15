@@ -1,4 +1,5 @@
-import discord, Discord as _D, common as _c, TeacherFunc as Do
+import discord
+import Dscrd as _D, common as _c, TeacherFunc as Do
 from discord.ext import commands
 
 
@@ -7,7 +8,7 @@ class Teacher(discord.Client):
     def __init__(self, devoirhandler):
         super(Teacher,self).__init__()
         self.devoirhandler = devoirhandler
-        self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
+        #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
     #@self.event()
     async def on_raw_reaction_add(payload):
