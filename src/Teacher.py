@@ -11,22 +11,21 @@ class Teacher(discord.Client):
 
     @self.event()
     async def on_raw_reaction_add(payload):
-        if(payload.message_id == 688488103253508099):
+        if payload.message_id == 688488103253508099:
             try:
-                role,member,emoji_name = self.get_role_member(payload)
+                role, member, emoji_name = self.get_role_member(payload)
                 await member.add_roles(role)
-                await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !"%(emoji_name))
+                await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !" % (emoji_name))
             except:
                 await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
 
     @self.event()
     async def on_raw_reaction_remove(payload):
-        if(payload.message_id == 688493645351092285):
+        if payload.message_id == 688493645351092285:
             try:
-                role,member,emoji_name = self.get_role_member(payload)
+                role, member, emoji_name = self.get_role_member(payload)
                 await member.remove_roles(role)
-                cdc = ":x: Tu ne peux maintenant plus accèder aux salons " + emoji_name + " !"
-                await member.send(cdc)
+                await member.send(":x: Tu ne peux maintenant plus accèder aux salons %s !" % (emoji_name))
             except:
                 pass
 
@@ -40,7 +39,7 @@ class Teacher(discord.Client):
 
     @self.event()
     async def on_message(self, message):
-        if (message.author == self.user):
+        if message.author == self.user:
             return
         elif _D.is_command(message.content):
             await message.channel.trigger_typing()
@@ -52,12 +51,12 @@ class Teacher(discord.Client):
 
     def get_role_member(self, payload):
         guild_id = payload.guild_id
-        guild = discord.utils.find(lambda g : g.id == guild_id , self.guilds)
+        guild = discord.utils.find(lambda g: g.id == guild_id, self.guilds)
         emoji_name = payload.emoji.name
         try:
-            role = discord.utils.get(guild.roles , name=emoji_name)
-            member = discord.utils.find(lambda m : m.id == payload.user_id , guild.members)
-            return role,member,emoji_name
+            role = discord.utils.get(guild.roles, name = emoji_name)
+            member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
+            return role, member, emoji_name
         except:
             pass
 
