@@ -2,9 +2,7 @@ import discord, Discord as _D, common as _c, TeacherFunc as Do
 from discord.ext import commands
 
 
-
-
-class Teacher(discord.Client)
+class Teacher(discord.Client):
 
     def __init__(self, devoirhandler):
         super().__init__(self)
