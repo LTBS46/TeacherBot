@@ -5,7 +5,7 @@ class StatusArg:
 import sys, common as _c
 def parsearg(globvar):
     globvar['status'] = StatusArg();
-    for arg in sys.argv:
+    for arg in sys.argv[1:]:
         if arg == '-t':
             globvar()['status'].test = True
         else:

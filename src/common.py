@@ -1,4 +1,7 @@
-import urllib as _url, json as _js, enum as _en, errno as _err
+import urllib as _url
+import json as _js
+import enum as _en
+import errno as _err
 import os as _os
 
 class BaseEnum(_en.Enum):
@@ -33,80 +36,83 @@ class Matiere(BaseEnum):
 
 
 def get_string_from_url(url):
+    import urllib as _url
+    print(_url)
     str = ''
+    tmp = {}
     try:
-        f = _url.urlopen(url)
-        str = f.read()
-    except:
+        tmp["f"] = _url.urlopen(url)
+        str = tmp["f"].read()
+    except Exception as e:
+        print(e)
         print("cannot access : {0}".format(url))
     finally:
-        f.close()
+        tmp["f"].close()
     return str
 
 def get_new_compteur_id(string):
+    import os as _os
+    import json as _js
+    tmp = {}
     rv = 0
     try:
-        f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "r")
-        rv = int(f.read(),10)
-        f.close()
-        f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "w")
-        f.write(str(rv + 1))
-    except (OSError, IOError) as e:
-        f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "w")
-        f.write('0')
+        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "r")
+        rv = int(tmp["f"].read(),10)
+        tmp["f"].close()
+        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "w")
+        tmp["f"].write(str(rv + 1))
+    except OSError as e:
+        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "w")
+        tmp["f"].write('0')
     finally:
-        f.close()
+        tmp["f"].close()
     return rv
 
 def get_compteur_id(string):
+    import os as _os
+    import json as _js
+    tmp = {}
     rv = -1
     try:
-        f = open("{2}{1}data{1}int{1}{0}".format(string,_os.sep,os.pardir), "r")
-        rv = int(f.read(),10)
+        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "r")
+        rv = int(tmp["f"].read(),10)
     finally:
-        f.close()
+        tmp["f"].close()
     return rv
 
 def get_token():
-    rv = None
-    try:
-        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
-        str = f.read()
-        obj = _js.loads(str)
-        rv = obj["token"]["discord"]
-        f.close()
-    except (OSError, IOError) as e:
-        print("file not found or can't be read")
-        f.close()
-    return rv
+    return"Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
 
 def get_master_guild():
+    import os as _os
+    import json as _js
+    tmp = {}
     rv = None
     try:
-        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
-        str = f.read()
-        obj = _js.loads(str)
-        rv = obj["main_guild"]
-    except (OSError, IOError) as e:
+        tmp["f"] = open(("{0}{1}data{1}setting.json").format(_os.pardir,_os.sep), "r")
+        rv = _js.loads(tmp["f"].read())["id"]
+    except OSError as e:
         print("file not found or can't be read")
     finally:
-        f.close()
+        tmp["f"].close()
     return rv
 
 def get_master_channel():
+    import os as _os
+    import json as _js
+    tmp = {}
     rv = None
     try:
-        f = open("{0}{1}data{1}settings.json".format(_os.pardir,_os.sep),"r")
-        str = f.read()
-        obj = _js.loads(str)
-        rv = obj["main_channel"]
-    except (OSError, IOError) as e:
+        tmp["f"] = open("{0}{1}data{1}setting.json".format(_os.pardir,_os.sep), "r")
+        rv = _js.loads(tmp["f"].read())["main_channel"]
+    except OSError as e:
         print("file not found or can't be read")
     finally:
-        f.close()
+        tmp["f"].close()
     return rv
 
 def get_widget_data():
+    import json as _js
     return _js.loads(get_string_from_url("https://discordapp.com/api/guilds/687779265093435420/widget.json"))
 
 

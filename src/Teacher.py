@@ -32,13 +32,15 @@ class Teacher(discord.Client):
 
     #@self.event()
     async def on_ready(self):
+        import os as _os
+        import common as _c
+        tmp = {}
         try:
-            f = open("{0}{1}data{1}settings.json".format(_os.pardir, _os.sep), "w")
-            f.write(_c.get_widget_data())
-            f.close()
+            tmp["f"] = open("{0}{1}data{1}settings.json".format(_os.pardir, _os.sep), "w")
+            tmp["f"].write(_c.get_widget_data())
         finally:
-            f.close()
-        g = await get_guild(_c.get_master_guild())
+            tmp["f"].close()
+        g = await self.get_guild("687779265093435420")
         c = await g.get_channel(_c.get_master_channel())
         await c.trigger_typing()
         await c.send('connecté comme {0}'.format(self.user))
