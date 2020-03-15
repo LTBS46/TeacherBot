@@ -7,9 +7,9 @@ class Teacher(discord.Client):
     def __init__(self, devoirhandler):
         super().__init__(self)
         self.devoirhandler = devoirhandler
-        await self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
+        self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
-    @self.event()
+    #@self.event()
     async def on_raw_reaction_add(payload):
         if payload.message_id == 688488103253508099:
             try:
@@ -19,7 +19,7 @@ class Teacher(discord.Client):
             except:
                 await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
 
-    @self.event()
+    #@self.event()
     async def on_raw_reaction_remove(payload):
         if payload.message_id == 688493645351092285:
             try:
@@ -29,7 +29,7 @@ class Teacher(discord.Client):
             except:
                 pass
 
-    @self.event()
+    #@self.event()
     async def on_ready(self):
         g = await get_guild(_c.get_master_guild())
         c = await g.get_channel(_c.get_master_channel())
@@ -37,7 +37,7 @@ class Teacher(discord.Client):
         await c.send('connecté comme {0}'.format(self.user))
         print('connecté comme {0}'.format(self.user))
 
-    @self.event()
+    #@self.event()
     async def on_message(self, message):
         if message.author == self.user:
             return

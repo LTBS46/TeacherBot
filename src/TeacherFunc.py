@@ -12,7 +12,7 @@ async def change_cours(b, message, token_s):pass
 
 async def change_cours_h(b, message, token_s):pass
 
-async def change_dev_h(b, message, token_s):pass
+async def change_dev(b, message, token_s):pass
 
 async def change_dev_h(b, message, token_s):pass
 
@@ -28,7 +28,7 @@ async def get_cours_h(b, message, token_s):pass
 
 async def get_cours(b, message, token_s):pass
 
-async def get_dev_h(b, message, token_s):pass
+async def get_dev(b, message, token_s):pass
 
 async def get_dev_h(b, message, token_s):pass
 

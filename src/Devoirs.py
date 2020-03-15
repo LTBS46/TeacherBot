@@ -1,7 +1,7 @@
 #{ "maths":{"nom devoir 1":"à faire", "nom devoir 2":"à faire"},
 # "francais":....,
 #}
-import _os
+import os as _os
 
 class Devoirs():
     def __init__(self):
