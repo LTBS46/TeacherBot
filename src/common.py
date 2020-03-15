@@ -33,7 +33,11 @@ class Matiere(BaseEnum):
     ALLEMAND = _en.auto()
     SI = _en.auto()
     PROJET = _en.auto()
-
+    RUSSE = _en.auto()
+    LATIN = _en.auto()
+    LSF = _en.auto()
+    MUSIQUE = _en.auto()
+    CINEMA = _en.auto()
 
 def get_string_from_url(url):
     str = ''
