@@ -5,7 +5,7 @@ from discord.ext import commands
 class Teacher(discord.Client):
 
     def __init__(self, devoirhandler):
-        super().__init__(self)
+        super(Teacher,self).__init__()
         self.devoirhandler = devoirhandler
         self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 

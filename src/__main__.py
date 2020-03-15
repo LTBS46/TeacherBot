@@ -5,7 +5,7 @@ def main():
     parsearg(globals())
     if globals()['status'].test:
         pass
-    client = T.Teacher(D.Devoir())
+    client = T.Teacher(D.Devoirs())
     client.run(c.get_token())
     return None
 
