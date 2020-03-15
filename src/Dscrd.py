@@ -40,7 +40,7 @@ def token_split(string):
         else:
             char_s += c
 
-    rv.append((char_s, "l" if literal else "t"))
+    rv.append([char_s, "l" if literal else "t"])
     for i in range(len(rv)):
         while rv[i][0] == '' and i < len(rv):
             rv = rv[:i] + rv[i + 1:]
