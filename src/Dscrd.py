@@ -31,13 +31,17 @@ def token_split(string):
             char_s = ''
         elif c == '"':
             literal = 1
+            rv.append((char_s, 't'))
+            char_s = ''
         elif c == "'":
             literal = 2
+            rv.append((char_s, 't'))
+            char_s = ''
         else:
             char_s += c
 
     rv.append((char_s, "l" if literal else "t"))
     for i in range(len(rv)):
-        while rv[i][0] == '':
+        while rv[i][0] == '' and i < len(rv):
             rv = rv[:i] + rv[i + 1:]
     return rv
