@@ -12,30 +12,30 @@ def token_split(string):
         elif literal:
             if literal == 2 and c == "'":
                 literal = 0
-                rv.append((char_s, 'l'))
+                rv.append([char_s, 'l'])
                 char_s = ''
             elif literal == 1 and c == '"':
                 literal = 1
-                rv.append((char_s, 'l'))
+                rv.append([char_s, 'l'])
                 char_s = ''
             else:
                 char_s += c
         elif c == '\n':
-            rv.append((char_s, 't'))
+            rv.append([char_s, 't'])
             char_s = ''
         elif c == '\t':
-            rv.append((char_s, 't'))
+            rv.append([char_s, 't'])
             char_s = ''
         elif c == ' ':
-            rv.append((char_s, 't'))
+            rv.append([char_s, 't'])
             char_s = ''
         elif c == '"':
             literal = 1
-            rv.append((char_s, 't'))
+            rv.append([char_s, 't'])
             char_s = ''
         elif c == "'":
             literal = 2
-            rv.append((char_s, 't'))
+            rv.append([char_s, 't'])
             char_s = ''
         else:
             char_s += c
