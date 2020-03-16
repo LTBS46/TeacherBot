@@ -7,6 +7,10 @@ class Devoirs():
     def __init__(self):
         self.donnees = {}
 
+    def delete(self,matiere, nom):
+        path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
+        _os.remove(path)
+        
     def save(self, matiere, nom, content):
             path_dir = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
             path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
