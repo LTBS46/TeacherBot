@@ -56,6 +56,7 @@ class Teacher(discord.Client):
                 for i in range(len(token_v)):
                     if token_v[-i]:
                         del token_s[-i]
+                print(token_s)
                 if len(token_s)>0:
                     await Do.commdict[token_s[0][0]](self, message, token_s)
                 else:
