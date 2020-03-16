@@ -4,7 +4,7 @@
   "description": "PL4353 45K TH3 T34CH3R 80T",
   "main": "src/__main__.py",
   "scripts": {
-    "test": "src/__main__.py -t"
+    "test": "src/__main__.py -t",
     "compile": "script/compile.bat"
   },
   "repository": {
