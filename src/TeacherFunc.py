@@ -53,6 +53,7 @@ async def change_cours_h(b, message, token_s):pass
 @commwrap
 async def change_dev(b, message, token_s):pass
 
+
 @helpwrap
 async def change_dev_h(b, message, token_s):pass
 
@@ -104,7 +105,11 @@ async def help(b, message, token_s):
 async def help_h(b, message, token_s):pass
 
 @commwrap
-async def new_dev(b, message, token_s):pass
+async def new_dev(b, message, token_s):
+    matiere = token_s[1][0]
+    nom = token_s[2][0]
+    contenu = token_s[3][0]
+    b.Devoirs_obj.save(matiere, nom, contenu)
 
 @helpwrap
 async def new_dev_h(b, message, token_s):pass
@@ -116,7 +121,7 @@ async def new_cours(b, message, token_s):
     nom = token_s[1][0]
     content = message.attachments
 
-    Cours_obj.save(matiere, nom, content)
+    b.Cours_obj.save(matiere, nom, content)
 
 @helpwrap
 async def new_cours_h(b, message, token_s):pass
@@ -126,9 +131,6 @@ async def ping(b, message, token_s):await message.channel.send('pong')
 
 @helpwrap
 async def ping_h(b, message, token_s):await message.channel.send('pong')
-
-
-Cours_obj = Cours()
 
 if __name__ == '__main__':
     print(commdict)

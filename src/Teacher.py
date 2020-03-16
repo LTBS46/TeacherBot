@@ -1,6 +1,8 @@
 import discord
 import Dscrd as _D, common as _c, TeacherFunc as Do,os as _os
 from discord.ext import commands
+from Cours import *
+from Devoirs import *
 
 
 class Teacher(discord.Client):
@@ -8,6 +10,8 @@ class Teacher(discord.Client):
     def __init__(self, devoirhandler):
         super(Teacher,self).__init__()
         self.devoirhandler = devoirhandler
+        self.Devoirs_obj = Devoirs()
+        self.Cours_obj = Cours()
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
     #@self.event()
