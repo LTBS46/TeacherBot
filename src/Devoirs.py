@@ -26,16 +26,32 @@ class Devoirs():
             for dev in self.donnees[mat].keys():
                 self.save(mat, dev, self.donnees[mat][dev])
 
-    def load(self, nom, matiere = None):
-        path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
-        if not matiere in self.donnees:
-            self.donnees[matiere] = {}
-        try:
-            f = open(path, "r")
-            self.donnees[matiere][nom] = f.read()
-        finally:
-            f.close()
-        return self.donnees[matiere][nom]
+    def load(self, matiere, nom = None):
+        path_l_mat = matiere.upper().split("-")
+        path_mat = "_".join(path_l_mat)
+        if not path_mat in self.donnees:
+            self.donnees[path_mat] = {}
+
+        if nom != None:
+            path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, path_mat, nom)
+            try:
+                f = open(path, "r")
+                self.donnees[path_mat][nom] = f.read()
+            finally:
+                f.close()
+            return self.donnees[path_mat][nom]
+        else:
+            path = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, path_mat)
+            for pathdirs, dirs, files in _os.walk(path):
+                if pathdirs == path_mat:
+                    for i in files:
+                        with open(path+_os.sep+i) as f:
+                            nom = i.split(".")[0]
+                            self.donnees[path_mat][nom] = f.read()
+            print(self.donnees)
+            return self.donnees[path_mat]
+
+
 
     def load_all(self):
         path = "{0}{1}data".format(_os.pardir,_os.sep)

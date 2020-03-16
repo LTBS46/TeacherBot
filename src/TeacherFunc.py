@@ -32,7 +32,7 @@ def commwrap(func):
     return func
 
 @commwrap
-async def __(b, message, token_s):await message.channel.send('unknown command : %s' % (message.content))
+async def __(b, message):await message.channel.send('unknown command : %s' % (message.content))
 
 @helpwrap
 async def ___h(b, message, token_s):await message.channel.send('help about error')
@@ -96,7 +96,13 @@ async def get_cours_h(b, message, token_s):
 
 @commwrap
 async def get_dev(b, message, token_s):
-    pass
+    matiere = token_s[1][0]
+    dict_data = b.devoirhandler.load(matiere)
+    end_message = f"```Voici les devoirs en {matiere} : ```"
+    for i in dict_data.keys():
+        to_add = f"\n - \"{i}\" : {dict_data[i]}"
+        end_message += to_add
+    await message.channel.send(end_message)
 
 @helpwrap
 async def get_dev_h(b, message, token_s):
@@ -130,7 +136,10 @@ async def help_h(b, message, token_s):
 
 @commwrap
 async def new_dev(b, message, token_s):
-    b.devoirhandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], token_s[3][0])
+    matiere_l =token_s[1][0].upper()
+    matiere_l = matiere_l.split('-')
+    matiere = '_'.join(matiere_l)
+    b.devoirhandler.save(matiere, token_s[2][0], token_s[3][0])
 
 @helpwrap
 async def new_dev_h(b, message, token_s):
@@ -138,7 +147,9 @@ async def new_dev_h(b, message, token_s):
 
 @commwrap
 async def new_cours(b, message, token_s):
-    b.courshandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], message.attachments)
+    matiere_l =token_s[1][0].upper().split('-')
+    matiere = '_'.join(matiere_l)
+    b.courshandler.save(matiere, token_s[2][0], message.attachments)
 
 @helpwrap
 async def new_cours_h(b, message, token_s):
