@@ -114,22 +114,14 @@ async def help_h(b, message, token_s):await message.channel.send('help about hel
 
 @commwrap
 async def new_dev(b, message, token_s):
-    matiere = token_s[1][0]
-    nom = token_s[2][0]
-    contenu = token_s[3][0]
-    b.Devoirs_obj.save(matiere, nom, contenu)
+    b.devoirhandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], token_s[3][0])
 
 @helpwrap
 async def new_dev_h(b, message, token_s):await message.channel.send('help about new_dev')
 
 @commwrap
-async def new_cours(b, message, token_s):b.courshandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], message.attachments)
-    #récup les fichiers du message et les enregistrer au bon endroit
-    matiere = token_s[0][0]
-    nom = token_s[1][0]
-    content = message.attachments
-
-    b.Cours_obj.save(matiere, nom, content)
+async def new_cours(b, message, token_s):
+    b.courshandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], message.attachments)
 
 @helpwrap
 async def new_cours_h(b, message, token_s):pass

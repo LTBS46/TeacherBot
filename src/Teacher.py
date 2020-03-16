@@ -10,8 +10,6 @@ class Teacher(discord.Client):
     def __init__(self, devoirhandler, courshandler):
         super(Teacher,self).__init__()
         self.devoirhandler = devoirhandler
-        self.Devoirs_obj = Devoirs()
-        self.Cours_obj = Cours()
         self.courshandler = courshandler
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
