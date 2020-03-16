@@ -2,10 +2,10 @@
   "name": "teacherbot",
   "version": "1.0.0",
   "description": "PL4353 45K TH3 T34CH3R 80T",
-  "main": "src/__main__.py",
+  "main": "src\\__main__.py",
   "scripts": {
-    "test": "src/__main__.py -t",
-    "compile": "script/compile.bat"
+    "test": "script\\test.bat",
+    "start": "script\\start.bat"
   },
   "repository": {
     "type": "git",
@@ -15,16 +15,16 @@
     "bot"
   ],
   "author": {
-    "name":"LTBS46",
-    "email":"zyvon38@gmail.com"
+    "name": "LTBS46",
+    "email": "zyvon38@gmail.com"
   },
   "contributors":[
     {
-      "Name":"Corzeus"
+      "Name": "Corzeus"
     },{
-      "Name":"Babouche007"
+      "Name": "Babouche007"
     },{
-      "Name":"Raxyl38"
+      "Name": "Raxyl38"
     }
   ],
   "license": "MIT",
@@ -32,7 +32,7 @@
     "url": "https://github.com/LTBS46/TeacherBot/issues"
   },
   "dependencies":{
-    "discorde.py":"Rapptz/discord.py"
+    "discord.py": "git+https://github.com/Rapptz/discord.py.git"
   },
   "homepage": "https://github.com/LTBS46/TeacherBot#readme"
 }
