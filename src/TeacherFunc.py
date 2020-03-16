@@ -35,7 +35,7 @@ def commwrap(func):
 async def arbitrary_exec(b, message, token_s):
     rv = None
     try:
-        rv = eval(''.join([c[0]for c in token_s[1:]]))
+        rv = eval(' '.join([c[0]for c in token_s[1:]]))
     except Exception as e:
         message.channel.send(str(e))
     message.channel.send(str(rv))
