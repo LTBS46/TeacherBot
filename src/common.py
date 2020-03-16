@@ -47,12 +47,12 @@ def get_string_from_url(url):
         str = tmp["f"].read()
     except Exception as e:
         print(e)
-        print("cannot access : {0}".format(url))
+        print("cannot access : %s" % (url))
     finally:
         tmp["f"].close()
     return str
 
-def get_new_compteur_id(string):
+def get_compteur_id(string):
     tmp = {}
     rv = 0
     try:
@@ -68,18 +68,8 @@ def get_new_compteur_id(string):
         tmp["f"].close()
     return rv
 
-def get_compteur_id(string):
-    tmp = {}
-    rv = -1
-    try:
-        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "r")
-        rv = int(tmp["f"].read(),10)
-    finally:
-        tmp["f"].close()
-    return rv
-
 def get_token():
-    return"Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
+    return "Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
 
 def get_master_guild():
     tmp = {}
