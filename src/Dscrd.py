@@ -1,8 +1,5 @@
 def is_command(string):
-    if len(string)>0:
-        return string[0] == '$'
-    else:
-        return False
+    return len(string) > 0 and string[0] == '$'
 
 def token_split(string):
     rv = []
@@ -37,9 +34,7 @@ def token_split(string):
     breaktime = 0
     literal = 0
     for c in string:
-        if breaktime :
-            breaktime -= 1
-        elif literal:
+        if literal:
             if literal == 2 and c == "'":
                 literal = 0
                 rv.append([char_s, 'l'])
@@ -50,24 +45,28 @@ def token_split(string):
                 char_s = ''
             else:
                 char_s += c
-
         elif c == '\n':
-            rv.append([char_s, 't'])
-            char_s = ''
+            if char_s != '':
+                rv.append([char_s, 't'])
+                char_s = ''
         elif c == '\t':
-            rv.append([char_s, 't'])
-            char_s = ''
+            if char_s != '':
+                rv.append([char_s, 't'])
+                char_s = ''
         elif c == ' ':
-            rv.append([char_s, 't'])
-            char_s = ''
+            if char_s != '':
+                rv.append([char_s, 't'])
+                char_s = ''
         elif c == '"':
             literal = 1
-            rv.append([char_s, 't'])
-            char_s = ''
+            if char_s != '':
+                rv.append([char_s, 't'])
+                char_s = ''
         elif c == "'":
             literal = 2
-            rv.append([char_s, 't'])
-            char_s = ''
+            if char_s != '':
+                rv.append([char_s, 't'])
+                char_s = ''
         else:
             char_s += c
 
