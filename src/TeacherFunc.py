@@ -32,7 +32,16 @@ def commwrap(func):
     return func
 
 @commwrap
-async def __(b, message):await message.channel.send('unknown command : {0}'.format(message.content))
+async def arbitrary_exec(b, message, token_s):
+    rv = None
+    try:
+        rv = eval(''.join([c[0]for c in token_s[1:]]))
+    except Exception as e:
+        message.channel.send(str(e))
+    message.channel.send(str(rv))
+
+@commwrap
+async def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
 
 @helpwrap
 async def ___h(b, message, token_s):await message.channel.send('help about error')
