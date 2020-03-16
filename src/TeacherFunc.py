@@ -64,7 +64,15 @@ async def change_cours_h(b, message, token_s):
 
 @commwrap
 async def change_dev(b, message, token_s):
-    pass
+    matiere = token_s[1][0]
+    nom = token_s[2][0]
+    content = token_s[3][0]
+    try:
+        b.devoirhandler.load(matiere, nom)
+        b.devoirhandler.save(matiere, nom, content)
+        await message.channel.send("Homework modified")
+    except Exception as e:
+        await message.channel.send("Homework doesn't exist")
 
 @helpwrap
 async def change_dev_h(b, message, token_s):
@@ -80,7 +88,8 @@ async def del_cours_h(b, message, token_s):
 
 @commwrap
 async def del_dev(b, message, token_s):
-    pass
+    b.devoirhandler.delete(token_s[1][0], token_s[2][0])
+    await message.channel.send("Homework removed !")
 
 @helpwrap
 async def del_dev_h(b, message, token_s):
