@@ -97,12 +97,21 @@ async def get_cours_h(b, message, token_s):
 @commwrap
 async def get_dev(b, message, token_s):
     matiere = token_s[1][0]
-    dict_data = b.devoirhandler.load(matiere)
-    end_message = f"```Voici les devoirs en {matiere} : ```"
-    for i in dict_data.keys():
-        to_add = f"\n - \"{i}\" : {dict_data[i]}"
-        end_message += to_add
-    await message.channel.send(end_message)
+    dict_data = {}
+    try:
+        nom = token_s[2][0]
+        dict_data = b.devoirhandler.load(matiere, nom)
+        await message.channel.send(f"\"{nom}\": {dict_data}")
+
+    except Exception as e:
+        dict_data = b.devoirhandler.load(matiere)
+        end_message = f"`Voici les devoirs en {matiere} : `"
+        for i in dict_data.keys():
+            to_add = f"\n - \"{i}\" : {dict_data[i]}"
+            end_message += to_add
+        await message.channel.send(end_message)
+
+
 
 @helpwrap
 async def get_dev_h(b, message, token_s):

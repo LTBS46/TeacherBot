@@ -25,7 +25,7 @@ def token_split(string):
                 open_bracket = ""
                 opened_bracket = False
                 arg = ""
-        elif opened_bracket and not c in list_brackets_args and not c in spaces:
+        elif opened_bracket and not c in list_brackets_args:
             arg+=c
     if opened_bracket and arg!= "":
         rv.append([arg,"t"])

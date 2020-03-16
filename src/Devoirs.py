@@ -43,14 +43,14 @@ class Devoirs():
         else:
             path = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, path_mat)
             for pathdirs, dirs, files in _os.walk(path):
-                if pathdirs == path_mat:
+                if pathdirs == path:
                     for i in files:
                         with open(path+_os.sep+i) as f:
                             nom = i.split(".")[0]
+                            print("ok")
                             self.donnees[path_mat][nom] = f.read()
             print(self.donnees)
             return self.donnees[path_mat]
-
 
 
     def load_all(self):
@@ -66,7 +66,6 @@ class Devoirs():
                         self.donnees[matiere][nom] = f.read()
                     finally:
                         f.close()
-
             else:
                 for i in dirs:
                     if not i in self.donnees:
