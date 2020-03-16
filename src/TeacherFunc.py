@@ -38,7 +38,7 @@ async def __(b, message):await message.channel.send('unknown command : {0}'.form
 async def ___h(b, message, token_s):await message.channel.send('help about error')
 
 @commwrap
-async def _print(b, message, token_s):await message.channel.send(''.join([c[0]for c in token_s[1:]]))
+async def _print(b, message, token_s):print(''.join([c[0]for c in token_s[1:]]));await message.channel.send(''.join([c[0]for c in token_s[1:]]))
 
 @helpwrap
 async def _print_h(b, message, token_s):await message.channel.send('help about print')
