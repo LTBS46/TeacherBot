@@ -32,6 +32,20 @@ def commwrap(func):
     return func
 
 @commwrap
+async def __(b, message, token_s):await message.channel.send('unknown command : %s' % (message.content))
+
+@helpwrap
+async def ___h(b, message, token_s):await message.channel.send('help about error')
+
+@commwrap
+async def _print(b, message, token_s):
+    print(''.join([c[0] for c in token_s[1:]]))
+    await message.channel.send(''.join([c[0] for c in token_s[1:]]))
+
+@helpwrap
+async def _print_h(b, message, token_s):await message.channel.send('help about print')
+
+@commwrap
 async def arbitrary_exec(b, message, token_s):
     rv = None
     try:
@@ -41,59 +55,60 @@ async def arbitrary_exec(b, message, token_s):
     message.channel.send(str(rv))
 
 @commwrap
-async def __(b, message, token_s):await message.channel.send('unknown command : {0}'.format(message.content))
+async def change_cours(b, message, token_s):
+    pass
 
 @helpwrap
-async def ___h(b, message, token_s):await message.channel.send('help about error')
+async def change_cours_h(b, message, token_s):
+    await message.channel.send('help about change_cours')
 
 @commwrap
-async def _print(b, message, token_s):print(''.join([c[0]for c in token_s[1:]]));await message.channel.send(''.join([c[0]for c in token_s[1:]]))
+async def change_dev(b, message, token_s):
+    pass
 
 @helpwrap
-async def _print_h(b, message, token_s):await message.channel.send('help about print')
+async def change_dev_h(b, message, token_s):
+    await message.channel.send('help about change_dev')
 
 @commwrap
-async def change_cours(b, message, token_s):pass
+async def del_cours(b, message, token_s):
+    pass
 
 @helpwrap
-async def change_cours_h(b, message, token_s):await message.channel.send('help about change_cours')
+async def del_cours_h(b, message, token_s):
+    await message.channel.send('help about del_cours')
 
 @commwrap
-async def change_dev(b, message, token_s):pass
-
+async def del_dev(b, message, token_s):
+    pass
 
 @helpwrap
-async def change_dev_h(b, message, token_s):await message.channel.send('help about change_dev')
+async def del_dev_h(b, message, token_s):
+    await message.channel.send('help about del_dev')
 
 @commwrap
-async def del_cours(b, message, token_s):pass
+async def get_cours(b, message, token_s):
+    pass
 
 @helpwrap
-async def del_cours_h(b, message, token_s):await message.channel.send('help about del_cours')
+async def get_cours_h(b, message, token_s):
+    await message.channel.send('help about get_cours')
 
 @commwrap
-async def del_dev(b, message, token_s):pass
+async def get_dev(b, message, token_s):
+    pass
 
 @helpwrap
-async def del_dev_h(b, message, token_s):await message.channel.send('help about del_dev')
+async def get_dev_h(b, message, token_s):
+    await message.channel.send('help about get_dev')
 
 @commwrap
-async def get_cours(b, message, token_s):pass
+async def echo(b, message, token_s):
+    await message.channel.send(token_s[1][0])
 
 @helpwrap
-async def get_cours_h(b, message, token_s):await message.channel.send('help about get_cours')
-
-@commwrap
-async def get_dev(b, message, token_s):pass
-
-@helpwrap
-async def get_dev_h(b, message, token_s):await message.channel.send('help about get_dev')
-
-@commwrap
-async def echo(b, message, token_s):await message.channel.send(token_s[1][0])
-
-@helpwrap
-async def echo_h(b, message, token_s):await message.channel.send('help about echo')
+async def echo_h(b, message, token_s):
+    await message.channel.send('help about echo')
 
 @commwrap
 async def help(b, message, token_s):
@@ -110,27 +125,32 @@ async def help(b, message, token_s):
         pass
 
 @helpwrap
-async def help_h(b, message, token_s):await message.channel.send('help about help')
+async def help_h(b, message, token_s):
+    await message.channel.send('help about help')
 
 @commwrap
 async def new_dev(b, message, token_s):
     b.devoirhandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], token_s[3][0])
 
 @helpwrap
-async def new_dev_h(b, message, token_s):await message.channel.send('help about new_dev')
+async def new_dev_h(b, message, token_s):
+    await message.channel.send('help about new_dev')
 
 @commwrap
 async def new_cours(b, message, token_s):
     b.courshandler.save(token_s[1][0].upper().split('-').join('_'), token_s[2][0], message.attachments)
 
 @helpwrap
-async def new_cours_h(b, message, token_s):pass
+async def new_cours_h(b, message, token_s):
+    pass
 
 @commwrap
-async def ping(b, message, token_s):await message.channel.send('pong')
+async def ping(b, message, token_s):
+    await message.channel.send('pong')
 
 @helpwrap
-async def ping_h(b, message, token_s):await message.channel.send('help about ping')
+async def ping_h(b, message, token_s):
+    await message.channel.send('help about ping')
 
 if __name__ == '__main__':
     import Debug
