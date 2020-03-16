@@ -47,7 +47,7 @@ def get_string_from_url(url):
         str = tmp["f"].read()
     except Exception as e:
         print(e)
-        print("cannot access : %s" % (url))
+        print(f"cannot access : {url}")
     finally:
         tmp["f"].close()
     return str
@@ -56,13 +56,13 @@ def get_compteur_id(string):
     tmp = {}
     rv = 0
     try:
-        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "r")
+        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "r")
         rv = int(tmp["f"].read(),10)
         tmp["f"].close()
-        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "w")
+        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
         tmp["f"].write(str(rv + 1))
     except OSError as e:
-        tmp["f"] = open("{2}{1}data{1}int{1}{0}".format(string, _os.sep, os.pardir), "w")
+        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
         tmp["f"].write('0')
     finally:
         tmp["f"].close()
@@ -75,7 +75,7 @@ def get_master_guild():
     tmp = {}
     rv = None
     try:
-        tmp["f"] = open(("{0}{1}data{1}setting.json").format(_os.pardir,_os.sep), "r")
+        tmp["f"] = open((f"{_os.pardir}{_os.sep}data{_os.sep}setting.json"), "r")
         rv = _js.loads(tmp["f"].read())["id"]
     except OSError as e:
         print("file not found or can't be read")
@@ -87,7 +87,7 @@ def get_master_channel():
     tmp = {}
     rv = None
     try:
-        tmp["f"] = open("{0}{1}data{1}setting.json".format(_os.pardir,_os.sep), "r")
+        tmp["f"] = open(f"{_os.pardir}{_os.sep}data{_os.sep}setting.json", "r")
         rv = _js.loads(tmp["f"].read())["main_channel"]
     except OSError as e:
         print("file not found or can't be read")

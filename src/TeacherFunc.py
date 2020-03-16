@@ -22,17 +22,17 @@ def namef(name):
 def helpwrap(func):
     helphandler[namef(func.__name__)] = func
     if __name__ == "__main__":
-        print("reach helper : %s" % namef(func.__name__))
+        print(f"reach helper : {namef(func.__name__)}")
     return func
 
 def commwrap(func):
     commdict[namef(func.__name__)] = func
     if __name__ == "__main__":
-        print("reach : %s" % namef(func.__name__))
+        print(f"reach : {namef(func.__name__)}")
     return func
 
 @commwrap
-async def __(b, message):await message.channel.send('unknown command : %s' % (message.content))
+async def __(b, message):await message.channel.send(f'unknown command : {message.content}')
 
 @helpwrap
 async def ___h(b, message, token_s):await message.channel.send('help about error')
@@ -60,7 +60,7 @@ async def change_cours(b, message, token_s):
 
 @helpwrap
 async def change_cours_h(b, message, token_s):
-    await message.channel.send('help about change_cours')
+    await message.channel.send('help about change-cours')
 
 @commwrap
 async def change_dev(b, message, token_s):
@@ -68,7 +68,7 @@ async def change_dev(b, message, token_s):
 
 @helpwrap
 async def change_dev_h(b, message, token_s):
-    await message.channel.send('help about change_dev')
+    await message.channel.send('help about change-dev')
 
 @commwrap
 async def del_cours(b, message, token_s):
@@ -76,7 +76,7 @@ async def del_cours(b, message, token_s):
 
 @helpwrap
 async def del_cours_h(b, message, token_s):
-    await message.channel.send('help about del_cours')
+    await message.channel.send('help about del-cours')
 
 @commwrap
 async def del_dev(b, message, token_s):
@@ -84,7 +84,7 @@ async def del_dev(b, message, token_s):
 
 @helpwrap
 async def del_dev_h(b, message, token_s):
-    await message.channel.send('help about del_dev')
+    await message.channel.send('help about del-dev')
 
 @commwrap
 async def get_cours(b, message, token_s):
@@ -92,7 +92,7 @@ async def get_cours(b, message, token_s):
 
 @helpwrap
 async def get_cours_h(b, message, token_s):
-    await message.channel.send('help about get_cours')
+    await message.channel.send('help about get-cours')
 
 @commwrap
 async def get_dev(b, message, token_s):
@@ -115,7 +115,7 @@ async def get_dev(b, message, token_s):
 
 @helpwrap
 async def get_dev_h(b, message, token_s):
-    await message.channel.send('help about get_dev')
+    await message.channel.send('help about get-dev')
 
 @commwrap
 async def echo(b, message, token_s):

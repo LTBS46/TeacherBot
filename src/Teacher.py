@@ -19,7 +19,7 @@ class Teacher(discord.Client):
             try:
                 role, member, emoji_name = self.get_role_member(payload)
                 await member.add_roles(role)
-                await member.send(":white_check_mark: Tu as maintenant accès aux salons %s , Bon travail !" % (emoji_name))
+                await member.send(f":white_check_mark: Tu as maintenant accès aux salons {emoji_name} , Bon travail !")
             except:
                 await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
 
@@ -29,7 +29,7 @@ class Teacher(discord.Client):
             try:
                 role, member, emoji_name = self.get_role_member(payload)
                 await member.remove_roles(role)
-                await member.send(":x: Tu ne peux maintenant plus accèder aux salons %s !" % (emoji_name))
+                await member.send(f":x: Tu ne peux maintenant plus accèder aux salons {emoji_name} !")
             except:
                 pass
 
@@ -43,8 +43,8 @@ class Teacher(discord.Client):
 #            tmp["f"].close()
         self.main_channel = self.get_channel(687940090454081601)
         await self.main_channel.trigger_typing()
-        await self.main_channel.send('connecté comme {0}'.format(self.user))
-        print('connecté comme {0}'.format(self.user))
+        await self.main_channel.send(f'connecté comme {self.user}')
+        print(f'connecté comme {self.user}')
 
     #@self.event()
     async def on_message(self, message):
