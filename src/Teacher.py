@@ -51,14 +51,14 @@ class Teacher(discord.Client):
             await message.channel.trigger_typing()
             try:
                 token_s = _D.token_split(message.content[1:])
-<<<<<<< HEAD
                 token_v = [t[0] == '' and t[1] != 'l' for t in token_s]
                 for i in range(len(token_v)):
                     if token_v[-i]:
                         del token_s[-i]
-=======
->>>>>>> 2e28e4fec33ac34dd6186081d1002c4647100ac8
-                Do.commdict[token_s[0][0]](self, message, token_s)
+                if len(token_s)>0:
+                    await Do.commdict[token_s[0][0]](self, message, token_s)
+                else:
+                    await Do.commdict[token_s[0][0]](self, message, token_s)
             except KeyError:
                 await Do.__(self, message)
 

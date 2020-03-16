@@ -1,6 +1,6 @@
 from Cours import *
 
-commdict = {}
+
 
 helphandler = {}
 
@@ -27,63 +27,64 @@ def helpwrap(func):
 def commwrap(func):
     comm = {}
     comm[namef(func.__name__)] = func
+    print("reach")
     return func
 
-@commwrap
+#@commwrap
 async def __(b, message):await message.channel.send('unknown command : {0}'.format(message.content))
 
-@helpwrap
+#@helpwrap
 async def ___h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def _print(b, message, token_s):await message.channel.send(''.join([c[0]for c in token_s[1:]]))
 
-@helpwrap
+#@helpwrap
 async def _print_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def change_cours(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def change_cours_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def change_dev(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def change_dev_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def del_cours(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def del_cours_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def del_dev(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def del_dev_h(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def get_cours_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def get_cours(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def get_dev(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def get_dev_h(b, message, token_s):pass
 
-@commwrap
-async def echo(b, message, token_s):await message.channel.send(message.content[5:])
+#@commwrap
+async def echo(b, message, token_s):await message.channel.send(token_s[1][0])
 
-@helpwrap
+#@helpwrap
 async def echo_h(b, message, token_s):await message.channel.send(message.content[5:])
 
-@commwrap
+#@commwrap
 async def help(b, message, token_s):
     if len(token_s) == 2:
         try:
@@ -97,16 +98,16 @@ async def help(b, message, token_s):
         #illegal argument number
         pass
 
-@helpwrap
+#@helpwrap
 async def help_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def new_dev(b, message, token_s):pass
 
-@helpwrap
+#@helpwrap
 async def new_dev_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def new_cours(b, message, token_s):
     #récup les fichiers du message et les enregistrer au bon endroit
     matiere = token_s[0][0]
@@ -115,14 +116,16 @@ async def new_cours(b, message, token_s):
 
     Cours_obj.save(matiere, nom, content)
 
-@helpwrap
+#@helpwrap
 async def new_cours_h(b, message, token_s):pass
 
-@commwrap
+#@commwrap
 async def ping(b, message, token_s):await message.channel.send('pong')
 
-@helpwrap
+#@helpwrap
 async def ping_h(b, message, token_s):await message.channel.send('pong')
 
 
 Cours_obj = Cours()
+commdict = {"echo":echo,
+            "ping":ping}
