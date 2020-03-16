@@ -1,5 +1,8 @@
 def is_command(string):
-    return string[0] == '$'
+    if len(string)>0:
+        return string[0] == '$'
+    else:
+        return False
 
 def token_split(string):
     rv = []
@@ -20,6 +23,7 @@ def token_split(string):
                 char_s = ''
             else:
                 char_s += c
+
         elif c == '\n':
             rv.append([char_s, 't'])
             char_s = ''
@@ -40,10 +44,5 @@ def token_split(string):
         else:
             char_s += c
 
-    rv.append([char_s, "l" if literal else "t"])
-    print(rv)
-    rv2 = rv
-    for i in range(len(rv)):
-        if rv[i][0] == "":
-            del rv2[i]
-    return rv2
+    rv.append([char_s, "l" if literal else "])
+    return rv
