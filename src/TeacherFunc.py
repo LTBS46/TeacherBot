@@ -97,7 +97,10 @@ async def del_dev_h(b, message, token_s):
 
 @commwrap
 async def get_cours(b, message, token_s):
-    pass
+    matiere = "_".join(token_s[1][0].upper().split("-"))
+    file_l = b.courshandler.load(matiere, token_s[2][0])
+
+    await message.channel.send(f"Voici le  Cours {token_s[2][0]} de {token_s[1][0]} :", files=file_l)
 
 @helpwrap
 async def get_cours_h(b, message, token_s):
@@ -167,7 +170,7 @@ async def new_dev_h(b, message, token_s):
 async def new_cours(b, message, token_s):
     matiere_l =token_s[1][0].upper().split('-')
     matiere = '_'.join(matiere_l)
-    b.courshandler.save(matiere, token_s[2][0], message.attachments)
+    await b.courshandler.save(matiere, token_s[2][0], message.attachments)
 
 @helpwrap
 async def new_cours_h(b, message, token_s):
