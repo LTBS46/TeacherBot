@@ -148,7 +148,7 @@ async def get_dev(b, message, token_s):
         for i in dict_data.keys():
             to_add = f"\n - \"{i}\" : {dict_data[i]}"
             end_message += to_add
-        if dict_data.keys() == []:
+        if end_message == "":
             end_message = "-Rien à faire ici\n -Vérifie bien l'orthographe!"
         await message.channel.send(end_message)
 
