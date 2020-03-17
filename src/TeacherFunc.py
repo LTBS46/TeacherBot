@@ -140,7 +140,10 @@ async def get_dev(b, message, token_s):
     try:
         nom = token_s[2][0]
         dict_data = b.devoirhandler.load(matiere, nom)
-        await message.channel.send(f"\"{nom}\": {dict_data}")
+        if dict_data =="":
+            await message.channel.send("Pas de devoirs à ce nom")
+        else:
+            await message.channel.send(f"\"{nom}\": {dict_data}")
 
     except Exception as e:
         dict_data = b.devoirhandler.load(matiere)
@@ -148,7 +151,7 @@ async def get_dev(b, message, token_s):
         for i in dict_data.keys():
             to_add = f"\n - \"{i}\" : {dict_data[i]}"
             end_message += to_add
-        if end_message == "":
+        if dict_data.keys() == []:
             end_message = "-Rien à faire ici\n -Vérifie bien l'orthographe!"
         await message.channel.send(end_message)
 
