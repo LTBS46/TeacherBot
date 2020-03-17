@@ -147,12 +147,12 @@ async def get_dev(b, message, token_s):
 
     except Exception as e:
         dict_data = b.devoirhandler.load(matiere)
-        end_message = f"`Voici tout les devoirs en {matiere} : `"
+        end_message = f"`Voici tous les devoirs en {matiere} : `"
         for i in dict_data.keys():
             to_add = f"\n - \"{i}\" : {dict_data[i]}"
             end_message += to_add
-        if dict_data.keys() == []:
-            end_message = "-Rien à faire ici\n -Vérifie bien l'orthographe!"
+        if end_message == f"`Voici tous les devoirs en {matiere} : `":
+            end_message = "Il n'y a rien à faire dans cette matière. Mais vérifie bien l'orhographe dans ta commande au cas où."
         await message.channel.send(end_message)
 
 
@@ -193,6 +193,7 @@ async def new_dev(b, message, token_s):
     matiere_l = matiere_l.split('-')
     matiere = '_'.join(matiere_l)
     b.devoirhandler.save(matiere, token_s[2][0], token_s[3][0])
+    await message.channel.send("Votre devoir a été enregistré")
 
 @helpwrap
 async def new_dev_h(b, message, token_s):
@@ -203,6 +204,7 @@ async def new_cours(b, message, token_s):
     matiere_l =token_s[1][0].upper().split('-')
     matiere = '_'.join(matiere_l)
     await b.courshandler.save(matiere, token_s[2][0], message.attachments)
+    await message.channel.send("Votre cours a bien été enregistré")
 
 @helpwrap
 async def new_cours_h(b, message, token_s):
