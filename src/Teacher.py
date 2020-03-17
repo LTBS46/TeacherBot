@@ -1,9 +1,12 @@
 import discord
-import Dscrd as _D, common as _c, TeacherFunc as Do,os as _os
+import Dscrd as _D,
+import common as _c
+import TeacherFunc as Do
+import os
 from discord.ext import commands
 from Cours import *
 from Devoirs import *
-
+import payloadhandler
 
 class Teacher(discord.Client):
 
@@ -13,27 +16,18 @@ class Teacher(discord.Client):
         self.courshandler = courshandler
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
-    #@self.event()
     async def on_raw_reaction_add(payload):
-        if payload.message_id == 688488103253508099:
-            try:
-                role, member, emoji_name = self.get_role_member(payload)
-                await member.add_roles(role)
-                await member.send(f":white_check_mark: Tu as maintenant accès aux salons {emoji_name} , Bon travail !")
-            except:
-                await member.send("Erreur lors de l'attribution du rôle , contacte un administrateur ( Raphaël PEYRE en priorité )")
+        try:
+            payloadhandler.payloadhandleadd[payload.message_id](self, payload)
+        except KeyError:
+            pass
 
-    #@self.event()
     async def on_raw_reaction_remove(payload):
-        if payload.message_id == 688493645351092285:
-            try:
-                role, member, emoji_name = self.get_role_member(payload)
-                await member.remove_roles(role)
-                await member.send(f":x: Tu ne peux maintenant plus accèder aux salons {emoji_name} !")
-            except:
-                pass
+        try:
+            payloadhandler.payloadhandlerem[payload.message_id](self, payload)
+        except KeyError:
+            pass
 
-    #@self.event()
     async def on_ready(self):
 #        tmp = {}
 #        try:
@@ -46,7 +40,6 @@ class Teacher(discord.Client):
         await self.main_channel.send(f'connecté comme {self.user}')
         print(f'connecté comme {self.user}')
 
-    #@self.event()
     async def on_message(self, message):
         if message.author == self.user:
             return
@@ -58,10 +51,7 @@ class Teacher(discord.Client):
                 for i in range(len(token_v)):
                     if token_v[-i]:
                         del token_s[-i]
-                if len(token_s)>0:
-                    await Do.commdict[token_s[0][0]](self, message, token_s)
-                else:
-                    await Do.commdict[token_s[0][0]](self, message, token_s)
+                await Do.commdict[token_s[0][0]](self, message, token_s)
             except KeyError:
                 await Do.__(self, message)
 
