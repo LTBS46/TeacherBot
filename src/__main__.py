@@ -5,12 +5,14 @@ import Dscrd
 import Teacher as T
 import Devoirs as D
 import Cours as C
+import os
 import atexit
 
 def main():
     parsearg(globals())
     if globals()['status'].test:
-        pass
+        if os.system('Teacher') != 10:
+            return 10
     globals()["client"] = T.Teacher(D.Devoirs(), C.Cours())
     @atexit.register
     def delclient():

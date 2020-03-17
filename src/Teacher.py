@@ -1,5 +1,5 @@
 import discord
-import Dscrd as _D,
+import Dscrd as _D
 import common as _c
 import TeacherFunc as Do
 import os

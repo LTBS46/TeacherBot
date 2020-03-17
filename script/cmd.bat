@@ -1,2 +1,3 @@
-cd ..
-start
+CD ..
+START
+CD SCRIPT

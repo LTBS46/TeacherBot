@@ -185,3 +185,4 @@ if __name__ == '__main__':
     import Debug
     print(commdict)
     print(helphandler)
+    exit(10)

@@ -1,0 +1,5 @@
+CD ..
+CD SRC
+PYTHON __MAIN__.PY -t
+CD ..
+CD SCRIPT

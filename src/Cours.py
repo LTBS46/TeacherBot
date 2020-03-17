@@ -6,7 +6,7 @@ class Cours():
     def __init__(self):
         self.donnees = {}
 
-    def save(self, matiere, nom, list_fic):
+    async def save(self, matiere, nom, list_fic):
         path_matiere = "_".join(matiere.upper().split("-"))
         if len(list_fic)>1:
             for i in range(len(list_fic)):
