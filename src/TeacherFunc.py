@@ -66,11 +66,11 @@ async def add_to_cours(b,message,token_s):
 
 @commwrap
 async def change_cours(b, message, token_s):
-    await message.channel.send(("Le cours à bien été modifié")
+    await message.channel.send("Le cours à bien été modifié")
 
 @helpwrap
 async def change_cours_h(b, message, token_s):
-    await message.channel.send(("Besoin d'aide à porpos de la commande change-cours ?")
+    await message.channel.send("Besoin d'aide à porpos de la commande change-cours ?")
 
 @commwrap
 async def change_dev(b, message, token_s):
@@ -94,8 +94,11 @@ async def del_cours(b, message, token_s):
         fichier = token_s[3][0]
         nom = token_s[2][0]
         matiere = token_s[1][0]
-        b.courshandler.delete(matiere, nom, fichiers)
-        await message.channel.send("Ce cours a été supprimé !")
+        dele = b.courshandler.delete(matiere, nom, fichiers)
+        if dele:
+            await message.channel.send("Ce fichier a été supprimé !")
+        else:
+            await message.channel.send("Ce fichier n\'a pas été trouvé, réessayez en modifiant l\'orthographe")
     except Exception as e:
         nom = token_s[2][0]
         matiere = token_s[1][0]

@@ -38,14 +38,20 @@ class Cours():
             return False
 
     def delete(self, matiere, nom, fichier = None):
-        if fichier == None:
-            path = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
-            for pathdirs, dirs, files in _os.walk(path):
-                if nom in dirs:
-                    shutil.rmtree(path+_os.sep+nom)
-        else:
-            path = "{0}{1}data{1}{2}{1}{3}{1}{4}".format(_os.pardir, _os.sep, matiere, nom, fichier)
-            _os.remove(path)
+        try:
+            if fichier == None:
+                path = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
+                for pathdirs, dirs, files in _os.walk(path):
+                    if nom in dirs:
+                        pass
+                        shutil.rmtree(path+_os.sep+nom)
+            else:
+                path = "{0}{1}data{1}{2}{1}{3}{1}{4}".format(_os.pardir, _os.sep, matiere, nom, fichier)
+                _os.remove(path)
+            return True
+        except Exception as e:
+            return False
+
 
     def load_all(self):
         pass
