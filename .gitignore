@@ -131,4 +131,5 @@ dmypy.json
 #homework & co
 *.dev
 *.crs
-MATHS/
+data/MATHS/Cours1/README.md
+data/MATHS/Cours1/Bot_Discord.pdf
