@@ -1,6 +1,7 @@
 import os as _os
 import re as _re
 import discord
+import shutil
 
 class Cours():
 
@@ -16,20 +17,35 @@ class Cours():
             await list_fic[i].save(f"{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}{_os.sep}{list_fic[i].filename}")
 
     def load(self, matiere, nom):
-        path_matiere = "_".join(matiere.upper().split("-"))
+        try:
+            path_matiere = "_".join(matiere.upper().split("-"))
+            path_folder = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}'
 
-        if not path_matiere in self.donnees:
-            self.donnees[path_matiere] = {}
+            if not path_matiere in self.donnees:
+                self.donnees[path_matiere] = {}
 
-        for pathdirs,dirs, files in _os.walk(path_folder):
-            if pathdirs == nom:
-                self.donnees[path_matiere][nom] = files
-                break
-        files_l = []
-        for i in self.donnees[path_matiere][nom]:
-            path = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{i}'
-            files_l.append(discord.File(path, i))
-        return files_l
+            for pathdirs,dirs, files in _os.walk(path_folder):
+                if pathdirs == path_folder:
+                    self.donnees[path_matiere][nom] = files
+
+            files_l = []
+            for i in self.donnees[path_matiere][nom]:
+                path = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}{_os.sep}{i}'
+                files_l.append(discord.File(path, i))
+
+            return files_l
+        except Exception as e:
+            return False
+
+    def delete(self, matiere, nom, fichier = None):
+        if fichier == None:
+            path = "{0}{1}data{1}{2}".format(_os.pardir, _os.sep, matiere)
+            for pathdirs, dirs, files in _os.walk(path):
+                if nom in dirs:
+                    shutil.rmtree(path+_os.sep+nom)
+        else:
+            path = "{0}{1}data{1}{2}{1}{3}{1}{4}".format(_os.pardir, _os.sep, matiere, nom, fichier)
+            _os.remove(path)
 
     def load_all(self):
         pass

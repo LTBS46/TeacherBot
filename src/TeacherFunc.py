@@ -55,6 +55,16 @@ async def arbitrary_exec(b, message, token_s):
     message.channel.send(str(rv))
 
 @commwrap
+async def add_to_cours(b,message,token_s):
+    matiere_l =token_s[1][0].upper().split('-')
+    matiere = '_'.join(matiere_l)
+    if b.courshandler.load(matiere, token_s[2][0]):
+        await b.courshandler.save(matiere, token_s[2][0], message.attachments)
+        await message.channel.send("Fichiers ajoutés")
+    else:
+        await message.channel.send("Ce cours n\'existe pas, il est donc impossible d'y ajouter d'autres fichiers")
+
+@commwrap
 async def change_cours(b, message, token_s):
     pass
 
@@ -70,9 +80,9 @@ async def change_dev(b, message, token_s):
     try:
         b.devoirhandler.load(matiere, nom)
         b.devoirhandler.save(matiere, nom, content)
-        await message.channel.send("Homework modified")
+        await message.channel.send("Devoirs modifiés")
     except Exception as e:
-        await message.channel.send("Homework doesn't exist")
+        await message.channel.send("Ce devoir n'existe pas")
 
 @helpwrap
 async def change_dev_h(b, message, token_s):
@@ -80,7 +90,15 @@ async def change_dev_h(b, message, token_s):
 
 @commwrap
 async def del_cours(b, message, token_s):
-    pass
+    try:
+        fichier = token_s[3][0]
+        nom = token_s[2][0]
+        matiere = token_s[1][0]
+        b.courshandler.delete(matiere, nom, fichiers)
+    except Exception as e:
+        nom = token_s[2][0]
+        matiere = token_s[1][0]
+        b.courshandler.delete(matiere, nom)
 
 @helpwrap
 async def del_cours_h(b, message, token_s):
@@ -97,10 +115,14 @@ async def del_dev_h(b, message, token_s):
 
 @commwrap
 async def get_cours(b, message, token_s):
-    matiere = "_".join(token_s[1][0].upper().split("-"))
-    file_l = b.courshandler.load(matiere, token_s[2][0])
+    try:
+        matiere = "_".join(token_s[1][0].upper().split("-"))
+        file_l = b.courshandler.load(matiere, token_s[2][0])
 
-    await message.channel.send(f"Voici le  Cours {token_s[2][0]} de {token_s[1][0]} :", files=file_l)
+        await message.channel.send(f"Voici le  Cours {token_s[2][0]} de {token_s[1][0]} :", files=file_l)
+    except Exception as e:
+        await message.channel.send("Ce cours n'existe pas encore")
+
 
 @helpwrap
 async def get_cours_h(b, message, token_s):
