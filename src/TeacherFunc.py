@@ -144,12 +144,13 @@ async def get_dev(b, message, token_s):
 
     except Exception as e:
         dict_data = b.devoirhandler.load(matiere)
-        end_message = f"`Voici tout les devoirs en {matiere} : `"
-        for i in dict_data.keys():
-            to_add = f"\n - \"{i}\" : {dict_data[i]}"
-            end_message += to_add
         if end_message == "":
-            end_message = "-Rien à faire ici\n -Vérifie bien l'orthographe!"
+            end_message = "Il n'y a rien à faire dans cette matière. Mais vérifie bien l'orhographe dans ta commande au cas où."
+        else:
+            end_message = f"`Voici tout les devoirs en {matiere} : `"
+            for i in dict_data.keys():
+                to_add = f"\n - \"{i}\" : {dict_data[i]}"
+                end_message += to_add
         await message.channel.send(end_message)
 
 
