@@ -155,8 +155,8 @@ async def get_dev(b, message, token_s):
         for i in dict_data.keys():
             to_add = f"\n - \"{i}\" : {dict_data[i]}"
             end_message += to_add
-        if end_message == "":
-            end_message = "-Rien à faire ici\n -Vérifie bien l'orthographe!"
+        if end_message == f"`Voici tout les devoirs en {matiere} : `":
+            end_message = "Il n'y a rien à faire dans cette matière. Mais vérifie bien l'orhographe dans ta commande au cas où."
         await message.channel.send(end_message)
 
 
