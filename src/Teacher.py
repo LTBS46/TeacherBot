@@ -12,6 +12,7 @@ class Teacher(discord.Client):
 
     def __init__(self, devoirhandler, courshandler):
         super(Teacher,self).__init__()
+        self.chelda = False
         self.devoirhandler = devoirhandler
         self.courshandler = courshandler
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
@@ -46,7 +47,7 @@ class Teacher(discord.Client):
         elif _D.is_command(message.content):
             await message.channel.trigger_typing()
             try:
-                token_s = _D.token_split(message.content[1:])
+                token_s = _D.token_split("donc".join(message.content[1:].split("%chelda"))if self.chelda else message.content[1:])
                 token_v = [t[0] == '' and t[1] != 'l' for t in token_s]
                 for i in range(len(token_v)):
                     if token_v[-i]:

@@ -32,10 +32,16 @@ def commwrap(func):
     return func
 
 @commwrap
-async def __(b, message):await message.channel.send(f'Commande inconnue : {message.content}')
+async def chelda(b, message, token_s):
+    b.chelda = bool(token_s)
+
+@commwrap
+async def __(b, message):
+    await message.channel.send(f'Commande inconnue : {message.content}')
 
 @helpwrap
-async def ___h(b, message, token_s):await message.channel.send("Besoin d'aide à porpos de error")
+async def ___h(b, message, token_s):
+    await message.channel.send("Besoin d'aide à porpos de error")
 
 @commwrap
 async def _print(b, message, token_s):
@@ -43,20 +49,21 @@ async def _print(b, message, token_s):
     await message.channel.send(''.join([c[0] for c in token_s[1:]]))
 
 @helpwrap
-async def _print_h(b, message, token_s):await message.channel.send("Besoin d'aide à porpos de la commande print ?")
+async def _print_h(b, message, token_s):
+    await message.channel.send("Besoin d'aide à porpos de la commande print ?")
 
 @commwrap
 async def arbitrary_exec(b, message, token_s):
     rv = None
     try:
-        rv = eval(' '.join([c[0]for c in token_s[1:]]))
+        rv = eval(' '.join([c[0] for c in token_s[1:]]))
     except Exception as e:
         message.channel.send(str(e))
     message.channel.send(str(rv))
 
 @commwrap
 async def add_to_cours(b,message,token_s):
-    matiere_l =token_s[1][0].upper().split('-')
+    matiere_l = token_s[1][0].upper().split('-')
     matiere = '_'.join(matiere_l)
     if b.courshandler.load(matiere, token_s[2][0]):
         await b.courshandler.save(matiere, token_s[2][0], message.attachments)
