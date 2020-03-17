@@ -94,7 +94,7 @@ async def del_cours(b, message, token_s):
         fichier = token_s[3][0]
         nom = token_s[2][0]
         matiere = token_s[1][0]
-        dele = b.courshandler.delete(matiere, nom, fichiers)
+        dele = b.courshandler.delete(matiere, nom, fichier)
         if dele:
             await message.channel.send("Ce fichier a été supprimé !")
         else:
