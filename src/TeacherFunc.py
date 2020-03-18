@@ -89,11 +89,11 @@ async def change_dev(b, message, token_s):
         b.devoirhandler.save(matiere, nom, content)
         await message.channel.send("Les devoirs ont bien été modifiés")
     except Exception as e:
-        await message.channel.send("Le devoir demandé n'existe pas, pour créer un devoir utilisez la commande $new-dev")
+        await message.channel.send("Le devoir demandé n\'existe pas, pour créer un devoir utilisez la commande $new-dev")
 
 @helpwrap
 async def change_dev_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande change-dev ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande change-dev ?")
 
 @commwrap
 async def del_cours(b, message, token_s):
@@ -114,7 +114,7 @@ async def del_cours(b, message, token_s):
 
 @helpwrap
 async def del_cours_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande del-cours ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande del-cours ?")
 
 @commwrap
 async def del_dev(b, message, token_s):
@@ -123,7 +123,7 @@ async def del_dev(b, message, token_s):
 
 @helpwrap
 async def del_dev_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande del-dev ?")
+    await message.channel.send("Besoin d'\ide à propos de la commande del-dev ?")
 
 @commwrap
 async def get_cours(b, message, token_s):
@@ -133,12 +133,12 @@ async def get_cours(b, message, token_s):
 
         await message.channel.send(f"Voici le  Cours intitulé {token_s[2][0]}, Matière : {token_s[1][0]}, Contenu :", files=file_l)
     except Exception as e:
-        await message.channel.send("Ce cours n'existe pas encore, pour créer un cours utilisez la commande $new-cours")
+        await message.channel.send("Ce cours n\'existe pas encore, pour créer un cours utilisez la commande $new-cours")
 
 
 @helpwrap
 async def get_cours_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande get-cours ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande get-cours ?")
 
 @commwrap
 async def get_dev(b, message, token_s):
@@ -148,7 +148,7 @@ async def get_dev(b, message, token_s):
         nom = token_s[2][0]
         dict_data = b.devoirhandler.load(matiere, nom)
         if dict_data =="":
-            await message.channel.send("Pas de devoirs à ce nom")
+            await message.channel.send("Il n\'y a de devoirs à ce nom, pour créer une liste de devoirs utilisez la commande $new-dev")
         else:
             await message.channel.send(f"\"{nom}\": {dict_data}")
 
@@ -159,14 +159,14 @@ async def get_dev(b, message, token_s):
             to_add = f"\n - \"{i}\" : {dict_data[i]}"
             end_message += to_add
         if end_message == f"`Voici tous les devoirs en {matiere} : `":
-            end_message = "Il n'y a rien à faire dans cette matière. Mais vérifie bien l'orhographe dans ta commande au cas où."
+            end_message = "Il n\'y a rien à faire dans cette matière. Mais vérifie bien l'orhographe dans ta commande au cas où."
         await message.channel.send(end_message)
 
 
 
 @helpwrap
 async def get_dev_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande get-dev ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande get-dev ?")
 
 @commwrap
 async def echo(b, message, token_s):
@@ -174,7 +174,7 @@ async def echo(b, message, token_s):
 
 @helpwrap
 async def echo_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande echo ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande echo ?")
 
 @commwrap
 async def help(b, message, token_s):
@@ -192,7 +192,7 @@ async def help(b, message, token_s):
 
 @helpwrap
 async def help_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande help ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande help ?")
 
 @commwrap
 async def new_dev(b, message, token_s):
@@ -200,30 +200,30 @@ async def new_dev(b, message, token_s):
     matiere_l = matiere_l.split('-')
     matiere = '_'.join(matiere_l)
     b.devoirhandler.save(matiere, token_s[2][0], token_s[3][0])
-    await message.channel.send("Votre devoir a été enregistré")
+    await message.channel.send("Votre devoir a été créé")
 
 @helpwrap
 async def new_dev_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande new_dev ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande new_dev ?")
 
 @commwrap
 async def new_cours(b, message, token_s):
     matiere_l =token_s[1][0].upper().split('-')
     matiere = '_'.join(matiere_l)
     await b.courshandler.save(matiere, token_s[2][0], message.attachments)
-    await message.channel.send("Votre cours a bien été enregistré")
+    await message.channel.send("Votre cours a bien été créé")
 
 @helpwrap
 async def new_cours_h(b, message, token_s):
-    pass
+    await message.channel.send("Besoin d\'aide à propos de la commande new_cours ?")
 
 @commwrap
 async def ping(b, message, token_s):
-    await message.channel.send('pong')
+    await message.channel.send("Eh bah nan!!\n je t\'ai eu hein?\nChe!!"")
 
 @helpwrap
 async def ping_h(b, message, token_s):
-    await message.channel.send("Besoin d'aide à propos de la commande ping ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande ping ?")
 
 if __name__ == '__main__':
     import Debug
