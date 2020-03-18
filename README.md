@@ -19,8 +19,10 @@ syntax: $cmd [arg ["litteral"],...]
 * get-cours :
 * change-cours :
 * del-cours :
-* help : [<command>]
-* arbitrary_exec : beware unstable
+* help : [command]
+* arbitrary-exec : beware unstable
+* chelda : [val] will set the chelda parameter
+* chelda-counter : get the chelda level for the actual hour
 
 ## Enum
 
