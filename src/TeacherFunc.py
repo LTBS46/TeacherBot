@@ -184,8 +184,10 @@ async def help(b, message, token_s):
         except KeyError:
             pass
     elif len(token_s) == 1:
-        #help normale
-        pass
+        try:
+            helphandler[token_s[1][0]](b, message, token_s)
+        except KeyError:
+            pass
     else:
         #illegal argument number
         pass
