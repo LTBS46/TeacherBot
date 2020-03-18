@@ -181,8 +181,10 @@ async def help(b, message, token_s):
         except KeyError:
             pass
     elif len(token_s) == 1:
-        #help normale
-        pass
+        try:
+            helphandler[token_s[1][0]](b, message, token_s)
+        except KeyError:
+            pass
     else:
         #illegal argument number
         pass
@@ -216,7 +218,7 @@ async def new_cours_h(b, message, token_s):
 
 @commwrap
 async def ping(b, message, token_s):
-    await message.channel.send("Eh bah nan!!\n je t\'ai eu hein?\nChe!!")
+    await message.channel.send("Eh bah nan!!\nJe t\'ai eu hein?\nChe!!"")
 
 @helpwrap
 async def ping_h(b, message, token_s):
