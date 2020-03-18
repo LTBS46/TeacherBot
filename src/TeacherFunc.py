@@ -123,7 +123,7 @@ async def del_dev(b, message, token_s):
 
 @helpwrap
 async def del_dev_h(b, message, token_s):
-    await message.channel.send("Besoin d'\ide à propos de la commande del-dev ?")
+    await message.channel.send("Besoin d\'aide à propos de la commande del-dev ?")
 
 @commwrap
 async def get_cours(b, message, token_s):
