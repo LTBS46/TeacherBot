@@ -31,9 +31,6 @@ def commwrap(func):
         print(f"reach : {namef(func.__name__)}")
     return func
 
-@commwrap
-async def chelda(b, message, token_s):
-    b.chelda = bool(token_s)
 
 @commwrap
 async def __(b, message):
@@ -219,7 +216,7 @@ async def new_cours_h(b, message, token_s):
 
 @commwrap
 async def ping(b, message, token_s):
-    await message.channel.send("Eh bah nan!!\n je t\'ai eu hein?\nChe!!"")
+    await message.channel.send("Eh bah nan!!\n je t\'ai eu hein?\nChe!!")
 
 @helpwrap
 async def ping_h(b, message, token_s):

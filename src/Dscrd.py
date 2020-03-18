@@ -9,9 +9,6 @@ def token_split(string):
     open_bracket = "$"
     arg = ""
     for c in string:
-        if c == "$":
-            opened_bracket = True
-            open_bracket ="$"
         if c in list_brackets_args:
             if opened_bracket:
                 opened_bracket = False
