@@ -21,8 +21,9 @@ class Devoirs():
             try:
                 f = open(path, "w")
                 f.write(content)
-            finally:
                 f.close()
+            except:
+                pass
             self.donnees[matiere][nom] = content
 
     def save_all(self):

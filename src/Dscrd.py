@@ -22,6 +22,7 @@ def token_split(string):
                 open_bracket = ""
                 opened_bracket = False
                 arg = ""
+                open_bracket =""
         elif opened_bracket and not c in list_brackets_args:
             arg+=c
     if opened_bracket and arg!= "":

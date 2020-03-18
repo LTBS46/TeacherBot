@@ -218,7 +218,7 @@ async def new_cours_h(b, message, token_s):
 
 @commwrap
 async def ping(b, message, token_s):
-    await message.channel.send("Eh bah nan!!\nJe t\'ai eu hein?\nChe!!"")
+    await message.channel.send("Eh bah nan!!\nJe t\'ai eu hein?\nChe!!")
 
 @helpwrap
 async def ping_h(b, message, token_s):
