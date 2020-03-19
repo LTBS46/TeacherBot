@@ -13,5 +13,5 @@ def parsearg(globvar):
         if arg == '-t':
             globvar['status'].test = True
         else:
-            print(f"unknown argument : {arg}")
+            print("unknown argument : {0}".format(arg))
     return None

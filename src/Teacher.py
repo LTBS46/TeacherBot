@@ -15,6 +15,14 @@ class Teacher(discord.Client):
         self.chelda = False
         self.devoirhandler = devoirhandler
         self.courshandler = courshandler
+        self.roles_accepted = {
+                               """"Prof":687927083263197194,
+                               "Admin":687921314589179907,
+                               "Delegue":687911591454179348"""
+                               "Prof":577907718715736066,
+        }
+        self.eleve_role =577907800751996960 #687921702805831711
+        self.eleve_accepted_commands = ["get-dev","get-cours", "print", "echo"]
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
     async def on_raw_reaction_add(payload):
@@ -42,19 +50,44 @@ class Teacher(discord.Client):
         print(f'connecté comme {self.user}')
 
     async def on_message(self, message):
+        adm = False
+        eleve = False
         if message.author == self.user:
             return
+        for i in message.author.roles:
+            if i.id in self.roles_accepted.values():
+                adm = True
+            elif i.id == self.eleve_role:
+                eleve = True
+        if not eleve and not adm:
+            await message.channel.send("Tu n'as pas les droits pour utiliser mes focntionnalités")
+            return
+
         elif _D.is_command(message.content):
             await message.channel.trigger_typing()
-            try:
-                token_s = _D.token_split("donc".join(message.content[1:].split("%chelda"))if self.chelda else message.content[1:])
-                token_v = [t[0] == '' and t[1] != 'l' for t in token_s]
-                for i in range(len(token_v)):
-                    if token_v[-i]:
-                        del token_s[-i]
-                await Do.commdict[token_s[0][0]](self, message, token_s)
-            except KeyError:
-                await Do.__(self, message)
+            if eleve:
+                try:
+                    token_s = _D.token_split("donc".join(message.content[1:].split("%chelda"))if self.chelda else message.content[1:])
+                    if token_s[0][0] in self.eleve_accepted_commands:
+                        token_v = [t[0] == '' and t[1] != 'l' for t in token_s]
+                        for i in range(len(token_v)):
+                            if token_v[-i]:
+                                del token_s[-i]
+                        await Do.commdict[token_s[0][0]](self, message, token_s)
+                    else:
+                        await message.channel.send("Tu n'as pas les droits pour effectuer cette commande")
+                except KeyError:
+                    await Do.__(self, message)
+            else:
+                try:
+                    token_s = _D.token_split("donc".join(message.content[1:].split("%chelda"))if self.chelda else message.content[1:])
+                    token_v = [t[0] == '' and t[1] != 'l' for t in token_s]
+                    for i in range(len(token_v)):
+                        if token_v[-i]:
+                            del token_s[-i]
+                    await Do.commdict[token_s[0][0]](self, message, token_s)
+                except KeyError:
+                    await Do.__(self, message)
 
     def get_role_member(self, payload):
         guild_id = payload.guild_id
