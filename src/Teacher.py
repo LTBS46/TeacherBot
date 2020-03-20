@@ -16,12 +16,12 @@ class Teacher(discord.Client):
         self.devoirhandler = devoirhandler
         self.courshandler = courshandler
         self.roles_accepted = {
-                               """"Prof":687927083263197194,
+                               "Prof":687927083263197194,
                                "Admin":687921314589179907,
-                               "Delegue":687911591454179348"""
-                               "Prof":577907718715736066,
+                               "Delegue":687911591454179348
+
         }
-        self.eleve_role =577907800751996960 #687921702805831711
+        self.eleve_role =687921702805831711
         self.eleve_accepted_commands = ["get-dev","get-cours", "print", "echo"]
         #self.change_presence(status = discord.Status.idle, activity = discord.Game("Trying to be a working bot"))
 
