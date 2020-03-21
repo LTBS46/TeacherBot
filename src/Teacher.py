@@ -19,7 +19,6 @@ class Teacher(discord.Client):
                                "Prof":687927083263197194,
                                "Admin":687921314589179907,
                                "Delegue":687911591454179348
-
         }
         self.eleve_role =687921702805831711
         self.eleve_accepted_commands = ["get-dev","get-cours", "print", "echo"]
@@ -59,6 +58,8 @@ class Teacher(discord.Client):
                 adm = True
             elif i.id == self.eleve_role:
                 eleve = True
+        if adm:
+            eleve = False
         if not eleve and not adm:
             await message.channel.send("Tu n'as pas les droits pour utiliser mes focntionnalités")
             return
