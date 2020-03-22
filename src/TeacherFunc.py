@@ -224,6 +224,11 @@ async def ping(b, message, token_s):
 async def ping_h(b, message, token_s):
     await message.channel.send("Besoin d\'aide à propos de la commande ping ?")
 
+@commwrap
+async def clear(b, ctx, token_s):
+    nombre=token_s[1][0].upper()
+    await ctx.channel.purge(limit=int(nombre)+1)
+
 if __name__ == '__main__':
     import Debug
     print(commdict)
