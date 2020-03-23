@@ -3,7 +3,7 @@ def is_command(string):
 
 def token_split(string):
     rv = []
-    list_brackets_args = ['"',"'"]
+    list_brackets_args = ['"']
     spaces = ["\n","\t", " "]
     opened_bracket = True
     open_bracket = "$"

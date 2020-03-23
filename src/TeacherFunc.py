@@ -250,16 +250,21 @@ async def clear(b, message, token_s):
             depart = token_s[1][0]
             arrivee = token_s[2][0]
             bracket = False
+            sub_b = True
             async for mess in message.channel.history(limit=100):
                 if bracket:
                     await mess.delete()
                 if mess.content == depart:
-                    bracket = True
+                    bracket = sub_b
                     await mess.delete()
                 if mess.content == arrivee:
-                    bracket = False
-                    await mess.delete()
-                    break
+                    if bracket == False:
+                        sub_b = False
+                        await message.channel.send("Faites attention, vous avez inversé la borne de départ et celle d'arrivée...")
+                    else:
+                        bracket = False
+                        await mess.delete()
+                        break
 
 if __name__ == '__main__':
     import Debug
