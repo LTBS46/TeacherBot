@@ -125,13 +125,22 @@ async def del_dev_h(b, message, token_s):
 
 @commwrap
 async def get_cours(b, message, token_s):
-    try:
-        matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
-        file_l = b.courshandler.load(matiere, token_s[2][0])
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
+    if len(token_s)>2:
+        try:
 
-        await message.channel.send(f"Voici le  Cours intitulé {token_s[2][0]}, Matière : {token_s[1][0]}, Contenu :", files=file_l)
-    except Exception as e:
-        await message.channel.send("Ce cours n\'existe pas encore, pour créer un cours utilisez la commande $new-cours")
+            file_l = b.courshandler.load(matiere, token_s[2][0])
+
+            await message.channel.send(f"Voici le  Cours intitulé {token_s[2][0]}, Matière : {token_s[1][0]}, Contenu :", files=file_l)
+        except Exception as e:
+            await message.channel.send("Ce cours n\'existe pas encore, pour créer un cours utilisez la commande $new-cours")
+    else:
+        dirs_l = b.courshandler.load(matiere)
+        mess = f"Voici les cours disponible en {token_s[1][0]} : "
+        for i in dirs_l:
+            mess += f"\n - \"{i}\" ;"
+        mess += f"\n Pour avoir un de ces cours faites: $get-cours \"{token_s[1][0]}\" \"nom du cours\" "
+        await message.channel.send(mess)
 
 
 @helpwrap

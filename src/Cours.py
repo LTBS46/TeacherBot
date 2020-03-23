@@ -16,26 +16,38 @@ class Cours():
                 _os.makedirs(path_dirs)
             await list_fic[i].save(f"{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}{_os.sep}{list_fic[i].filename}")
 
-    def load(self, matiere, nom):
-        try:
-            path_matiere = "_".join(matiere.upper().split("-"))
-            path_folder = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}'
+    def load(self, matiere, nom=None):
+        path_matiere = "_".join(matiere.upper().split("-"))
+        path_folder = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}'
+        if nom != None:
+            try:
 
-            if not path_matiere in self.donnees:
-                self.donnees[path_matiere] = {}
 
-            for pathdirs,dirs, files in _os.walk(path_folder):
-                if pathdirs == path_folder:
-                    self.donnees[path_matiere][nom] = files
 
-            files_l = []
-            for i in self.donnees[path_matiere][nom]:
-                path = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}{_os.sep}{i}'
-                files_l.append(discord.File(path, i))
+                if not path_matiere in self.donnees:
+                    self.donnees[path_matiere] = {}
 
-            return files_l
-        except Exception as e:
-            return False
+                for pathdirs,dirs, files in _os.walk(path_folder):
+                    if pathdirs == path_folder:
+                        self.donnees[path_matiere][nom] = files
+
+                files_l = []
+                for i in self.donnees[path_matiere][nom]:
+                    path = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}{_os.sep}{i}'
+                    files_l.append(discord.File(path, i))
+
+                return files_l
+            except Exception as e:
+                return False
+        else:
+            to_return = []
+            try:
+                for pathdirs,dirs, files in _os.walk(f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}'):
+                    if pathdirs == f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}':
+                        to_return = dirs
+                return to_return
+            except Exception as e:
+                return False
 
     def delete(self, matiere, nom, fichier = None):
         try:
