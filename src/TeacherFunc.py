@@ -1,4 +1,5 @@
 from Cours import *
+from ErrorsEq import *
 
 commdict = {}
 helphandler = {}
@@ -60,8 +61,8 @@ async def arbitrary_exec(b, message, token_s):
 
 @commwrap
 async def add_to_cours(b,message,token_s):
-    matiere_l = token_s[1][0].upper().split('-')
-    matiere = '_'.join(matiere_l)
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
+
     if b.courshandler.load(matiere, token_s[2][0]):
         await b.courshandler.save(matiere, token_s[2][0], message.attachments)
         await message.channel.send("Le fichiers à bien ajoutés aux cours")
@@ -78,7 +79,7 @@ async def change_cours_h(b, message, token_s):
 
 @commwrap
 async def change_dev(b, message, token_s):
-    matiere = token_s[1][0]
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
     nom = token_s[2][0]
     content = token_s[3][0]
     try:
@@ -97,7 +98,7 @@ async def del_cours(b, message, token_s):
     try:
         fichier = token_s[3][0]
         nom = token_s[2][0]
-        matiere = token_s[1][0]
+        matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
         dele = b.courshandler.delete(matiere, nom, fichier)
         if dele:
             await message.channel.send("Ce fichier a été supprimé !")
@@ -105,7 +106,7 @@ async def del_cours(b, message, token_s):
             await message.channel.send("Ce fichier n\'a pas été trouvé, réessayez en modifiant l\'orthographe")
     except Exception as e:
         nom = token_s[2][0]
-        matiere = token_s[1][0]
+        matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
         b.courshandler.delete(matiere, nom)
         await message.channel.send("Ce cours a été supprimé !")
 
@@ -125,7 +126,7 @@ async def del_dev_h(b, message, token_s):
 @commwrap
 async def get_cours(b, message, token_s):
     try:
-        matiere = "_".join(token_s[1][0].upper().split("-"))
+        matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
         file_l = b.courshandler.load(matiere, token_s[2][0])
 
         await message.channel.send(f"Voici le  Cours intitulé {token_s[2][0]}, Matière : {token_s[1][0]}, Contenu :", files=file_l)
@@ -139,10 +140,10 @@ async def get_cours_h(b, message, token_s):
 
 @commwrap
 async def get_dev(b, message, token_s):
-    matiere = token_s[1][0]
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
     dict_data = {}
     try:
-        nom = token_s[2][0]
+        nom = put_in_normes(token_s[2][0])
         dict_data = b.devoirhandler.load(matiere, nom)
         if dict_data =="":
             await message.channel.send("Il n\'y a de devoirs à ce nom, pour créer une liste de devoirs utilisez la commande $new-dev")
@@ -195,10 +196,11 @@ async def help_h(b, message, token_s):
 
 @commwrap
 async def new_dev(b, message, token_s):
-    matiere_l =token_s[1][0].upper()
-    matiere_l = matiere_l.split('-')
-    matiere = '_'.join(matiere_l)
-    b.devoirhandler.save(matiere, token_s[2][0], token_s[3][0])
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
+
+    date = put_in_normes(token_s[2][0])
+
+    b.devoirhandler.save(matiere, date, token_s[3][0])
     await message.channel.send("Votre devoir a été créé")
 
 @helpwrap
@@ -207,8 +209,7 @@ async def new_dev_h(b, message, token_s):
 
 @commwrap
 async def new_cours(b, message, token_s):
-    matiere_l =token_s[1][0].upper().split('-')
-    matiere = '_'.join(matiere_l)
+    matiere = '_'.join(find_mat(token_s[1][0].lower()).upper().split('-'))
     await b.courshandler.save(matiere, token_s[2][0], message.attachments)
     await message.channel.send("Votre cours a bien été créé")
 
@@ -233,7 +234,7 @@ async def clear(b, message, token_s):
     try:
         await message.channel.purge(limit=int(nombre)+1)
     except Exception as e:
-        await message.channel.send("Vous avez mal rentré le nombre de message à supprimer") 
+        await message.channel.send("Vous avez mal rentré le nombre de message à supprimer")
 
 
 
