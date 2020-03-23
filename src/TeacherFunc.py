@@ -236,18 +236,30 @@ async def ping_h(b, message, token_s):
 
 @commwrap
 async def clear(b, message, token_s):
-    nombre = "10"
-    if len(token_s)>1:
-        nombre = token_s[1][0].upper()
-    print(nombre)
-    try:
-        await message.channel.purge(limit=int(nombre)+1)
-    except Exception as e:
-        await message.channel.send("Vous avez mal rentré le nombre de message à supprimer")
-
-
-
-
+    if len(token_s) ==2:
+        nombre = "10"
+        if len(token_s)>1:
+            nombre = token_s[1][0].upper()
+        print(nombre)
+        try:
+            await message.channel.purge(limit=int(nombre)+1)
+        except Exception as e:
+            await message.channel.send("Vous avez mal rentré le nombre de message à supprimer")
+    elif len(token_s)>2:
+            i = 0
+            depart = token_s[1][0]
+            arrivee = token_s[2][0]
+            bracket = False
+            async for mess in message.channel.history(limit=100):
+                if bracket:
+                    await mess.delete()
+                if mess.content == depart:
+                    bracket = True
+                    await mess.delete()
+                if mess.content == arrivee:
+                    bracket = False
+                    await mess.delete()
+                    break
 
 if __name__ == '__main__':
     import Debug
