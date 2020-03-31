@@ -45,3 +45,12 @@ def find_mat(mat):
             print("ok")
             final_mat = i
     return final_mat
+
+def tri(str, tris):
+    dep_f = ""
+    for i in str:
+        if i in tris:
+            pass
+        else:
+            dep_f +=i
+    return dep_f

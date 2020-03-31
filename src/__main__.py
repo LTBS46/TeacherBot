@@ -1,5 +1,4 @@
 from ArgParse import parsearg, StatusArg
-import COVID19
 import common as c
 import Dscrd
 import Teacher as T
@@ -14,6 +13,7 @@ def main():
         if os.system('Teacher') != 10:
             return 10
     globals()["client"] = T.Teacher(D.Devoirs(), C.Cours())
+
     @atexit.register
     def delclient():
         del client

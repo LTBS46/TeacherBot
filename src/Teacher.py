@@ -49,22 +49,21 @@ class Teacher(discord.Client):
         print(f'connecté comme {self.user}')
 
     async def on_message(self, message):
-        adm = False
-        eleve = False
         if message.author == self.user:
             return
-        for i in message.author.roles:
-            if i.id in self.roles_accepted.values():
-                adm = True
-            elif i.id == self.eleve_role:
-                eleve = True
-        if adm:
-            eleve = False
-        if not eleve and not adm:
-            await message.channel.send("Tu n'as pas les droits pour utiliser mes focntionnalités")
-            return
-
         elif _D.is_command(message.content):
+            adm = False
+            eleve = False
+            for i in message.author.roles:
+                if i.id in self.roles_accepted.values():
+                    adm = True
+                elif i.id == self.eleve_role:
+                    eleve = True
+            if adm:
+                eleve = False
+            if not eleve and not adm:
+                await message.channel.send("Tu n'as pas les droits pour utiliser mes focntionnalités")
+                return
             await message.channel.trigger_typing()
             if eleve:
                 try:

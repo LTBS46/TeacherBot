@@ -16,6 +16,7 @@ def token_split(string):
                 arg = ""
             else:
                 opened_bracket = True
+                open_bracket = "\""
         if c in spaces:
             if open_bracket == "$":
                 rv.append([arg, "t"])
@@ -23,6 +24,7 @@ def token_split(string):
                 opened_bracket = False
                 arg = ""
                 open_bracket =""
+
         if opened_bracket and not c in list_brackets_args:
             arg+=c
     if opened_bracket and arg!= "":
@@ -30,46 +32,3 @@ def token_split(string):
         arg = ""
     print(rv)
     return rv
-
-    """char_s = ''
-    breaktime = 0
-    literal = 0
-    for c in string:
-        if literal:
-            if literal == 2 and c == "'":
-                literal = 0
-                rv.append([char_s, 'l'])
-                char_s = ''
-            elif literal == 1 and c == '"':
-                literal = 1
-                rv.append([char_s, 'l'])
-                char_s = ''
-            else:
-                char_s += c
-        elif c == '\n':
-            if char_s != '':
-                rv.append([char_s, 't'])
-                char_s = ''
-        elif c == '\t':
-            if char_s != '':
-                rv.append([char_s, 't'])
-                char_s = ''
-        elif c == ' ':
-            if char_s != '':
-                rv.append([char_s, 't'])
-                char_s = ''
-        elif c == '"':
-            literal = 1
-            if char_s != '':
-                rv.append([char_s, 't'])
-                char_s = ''
-        elif c == "'":
-            literal = 2
-            if char_s != '':
-                rv.append([char_s, 't'])
-                char_s = ''
-        else:
-            char_s += c
-
-    rv.append([char_s, "l" if literal else "t"])
-    return rv"""

@@ -21,9 +21,6 @@ class Cours():
         path_folder = f'{_os.pardir}{_os.sep}data{_os.sep}{path_matiere}{_os.sep}{nom}'
         if nom != None:
             try:
-
-
-
                 if not path_matiere in self.donnees:
                     self.donnees[path_matiere] = {}
 

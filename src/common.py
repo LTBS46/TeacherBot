@@ -69,7 +69,7 @@ def get_compteur_id(string):
     return rv
 
 def get_token():
-    return "Njg4MTI2NzgyMjgwNjk1ODc0.Xmvy_A.uSb4OFRxpeaEEd80JdAu_Uq7tgs"
+    return "Njg4MTI2NzgyMjgwNjk1ODc0.Xnsyzw.BLe7RXa_jf3UzfYfQZFDBFaWXSw"#"Njg4ODYyODg5NTYxNjg2MDU1.XnsJqg.MRD1nM_AljNC3lWGLbaSs-YsJ-A"
 
 def get_master_guild():
     tmp = {}
