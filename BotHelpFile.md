@@ -19,7 +19,7 @@ Le bot renvoie tout ce qui se trouve dans le dossier _"nom"_ de la matière _"ma
 ### `$new-cours "matière" "nom"`:
 _Il est impératif de joindre un fichier à la commande_ , va créer un nouveau cours dans la matière dite avec le nom dit en y incluant le fichier transmis
 ### `$add-to-cours "matière" "nom"`:
-_Il est impératif de joindre un fichier à la commande_ , va ajouter le fichier dans le cours correspondant, ainsi il sera disponible via la commande get-cours
+_Il est impératif de joindre un fichier à la commande_ , va ajouter le fichier dans le cours correspondant, ainsi il sera disponible via la commande `get-cours`
 ### `$del-cours "matière" "nom" "fichier"`:
 Supprime un fichier d'un cours (ne pas oublier de mettre l'extension du fichier). Si aucun nom de fichier n'est rentré, le bot détruit tout le cours en question
 ## Liste des cours
@@ -40,5 +40,5 @@ Les noms des matières sont les suivant (ils sont à rentrer avec rigueur si vou
 eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEJvdEhlbHBGaWxlXG5hdX
 Rob3I6IExUQlM0NlxuY2F0ZWdvcmllczogJ0hlbHBGaWxlLCBI
 ZWxwJ1xuZGF0ZTogJzIwMjAtMDQtMDMnXG4iLCJoaXN0b3J5Ij
-pbLTU4NjI3NDI2Miw5MzE4ODIxNDZdfQ==
+pbMTMxNTQwNTQ4OCw5MzE4ODIxNDZdfQ==
 -->
