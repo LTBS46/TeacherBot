@@ -37,5 +37,8 @@ Les noms des matières sont les suivant (ils sont à rentrer avec rigueur si vou
 - spemaths
 - spespc
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTMxODgyMTQ2XX0=
+eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEJvdEhlbHBGaWxlXG5hdX
+Rob3I6IExUQlM0NlxuY2F0ZWdvcmllczogJ0hlbHBGaWxlLCBI
+ZWxwJ1xuZGF0ZTogJzIwMjAtMDQtMDMnXG4iLCJoaXN0b3J5Ij
+pbLTc3MDMyNzg1NSw5MzE4ODIxNDZdfQ==
 -->
