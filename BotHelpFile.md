@@ -36,9 +36,3 @@ Les noms des matières sont les suivant (ils sont à rentrer avec rigueur si vou
 - spc (pour la physique-chimie)
 - spemaths
 - spespc
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEJvdEhlbHBGaWxlXG5hdX
-Rob3I6IExUQlM0NlxuY2F0ZWdvcmllczogJ0hlbHBGaWxlLCBI
-ZWxwJ1xuZGF0ZTogJzIwMjAtMDQtMDMnXG4iLCJoaXN0b3J5Ij
-pbLTEwOTMxMTExMDksOTMxODgyMTQ2XX0=
--->

@@ -27,6 +27,3 @@ syntax: $cmd [arg ["litteral"],...]
 ## Enum
 
 matière : MATHS, PHILO, HIST, GEO, SPE_MATHS, PHYSIQUE, SPE_PHYSIQUE, ISN, ANGLAIS_G1, ANGLAIS_G2, ESPAGNOL, ITALIEN, ALLEMAND, SI, PROJET, RUSSE, LATIN, LSF, MUSIQUE, CINEMA
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NTg3NTMzOF19
--->
