@@ -1,4 +1,4 @@
-LGM est le Robot qui a été développé par les administrateurs du serveur afin de faciliter l'échange d'informations entre professeurs et élèves de la classe TS5. Ainsi le robot met à disposition des **commandes** permettant la gestion de devoirs ou de cours (la différence étant que dans un cours on peut rentrer des fichier et dans un devoirs on peut seulement mettre du texte). L'accès à ses fonctionnalités se présentent sous la forme:
+LGM est le chatbot (robot de dialogue) qui a été développé par les administrateurs du serveur afin de faciliter l'échange d'informations entre professeurs et élèves de la classe TS5. Ainsi le robot met à disposition des **commandes** permettant la gestion de devoirs ou de cours (la différence étant que dans un cours on peut rentrer des fichier et dans un devoirs on peut seulement mettre du texte). L'accès à ses fonctionnalités se présentent sous la forme:
 ```php
 $commande "argument 1" "argument 2" ...
 ```
@@ -40,5 +40,5 @@ Les noms des matières sont les suivant (ils sont à rentrer avec rigueur si vou
 eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEJvdEhlbHBGaWxlXG5hdX
 Rob3I6IExUQlM0NlxuY2F0ZWdvcmllczogJ0hlbHBGaWxlLCBI
 ZWxwJ1xuZGF0ZTogJzIwMjAtMDQtMDMnXG4iLCJoaXN0b3J5Ij
-pbMTMxNTQwNTQ4OCw5MzE4ODIxNDZdfQ==
+pbLTEwOTMxMTExMDksOTMxODgyMTQ2XX0=
 -->
