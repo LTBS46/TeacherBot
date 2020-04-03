@@ -15,7 +15,7 @@ Change un devoir _déjà existant_ dans la base de données du bot, dans la mati
 Supprime un devoir de la base de données du bot
 ## `Pour les cours`:notebook:
 ### `$get-cours "matière" "nom" "fichier"`:
-Le bot renvoie tout ce qui se trouve dans le dossier _"nom"_ de la matière _"matière"_ (cad tous les fichiers qu'il y trouve). Si le champ _"fichier"_ est précisé (ne pas oublier de mettre l'extension du fichier) le bot ne vous renvoie que le fichier correspondant dans sa base de donnée
+Le bot renvoie tout ce qui se trouve dans le dossier _"nom"_ de la matière _"matière"_ (c-à-d tous les fichiers qu'il y trouve). Si le champ _"fichier"_ est précisé (ne pas oublier de mettre l'extension du fichier) le bot ne vous renvoie que le fichier correspondant dans sa base de donnée
 ### `$new-cours "matière" "nom"`:
 _Il est impératif de joindre un fichier à la commande_ , va créer un nouveau cours dans la matière dite avec le nom dit en y incluant le fichier transmis
 ### `$add-to-cours "matière" "nom"`:
@@ -40,5 +40,5 @@ Les noms des matières sont les suivant (ils sont à rentrer avec rigueur si vou
 eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEJvdEhlbHBGaWxlXG5hdX
 Rob3I6IExUQlM0NlxuY2F0ZWdvcmllczogJ0hlbHBGaWxlLCBI
 ZWxwJ1xuZGF0ZTogJzIwMjAtMDQtMDMnXG4iLCJoaXN0b3J5Ij
-pbLTc3MDMyNzg1NSw5MzE4ODIxNDZdfQ==
+pbLTU4NjI3NDI2Miw5MzE4ODIxNDZdfQ==
 -->
