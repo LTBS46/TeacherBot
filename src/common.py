@@ -52,17 +52,18 @@ def get_string_from_url(url):
         tmp["f"].close()
     return str
 
+path_main = _os.path.dirname(_os.path.realpath(__file__))
 def get_compteur_id(string):
     tmp = {}
     rv = 0
     try:
-        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "r")
+        tmp["f"] = open(f"{path_main}{_os.sep}data{_os.sep}int{_os.sep}{string}", "r")
         rv = int(tmp["f"].read(),10)
         tmp["f"].close()
-        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
+        tmp["f"] = open(f"{path_main}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
         tmp["f"].write(str(rv + 1))
     except OSError as e:
-        tmp["f"] = open(f"{os.pardir}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
+        tmp["f"] = open(f"{path_main}{_os.sep}data{_os.sep}int{_os.sep}{string}", "w")
         tmp["f"].write('0')
     finally:
         tmp["f"].close()
@@ -75,7 +76,7 @@ def get_master_guild():
     tmp = {}
     rv = None
     try:
-        tmp["f"] = open((f"{_os.pardir}{_os.sep}data{_os.sep}setting.json"), "r")
+        tmp["f"] = open((f"{path_main}{_os.sep}data{_os.sep}setting.json"), "r")
         rv = _js.loads(tmp["f"].read())["id"]
     except OSError as e:
         print("file not found or can't be read")
@@ -87,7 +88,7 @@ def get_master_channel():
     tmp = {}
     rv = None
     try:
-        tmp["f"] = open(f"{_os.pardir}{_os.sep}data{_os.sep}setting.json", "r")
+        tmp["f"] = open(f"{path_main}{_os.sep}data{_os.sep}setting.json", "r")
         rv = _js.loads(tmp["f"].read())["main_channel"]
     except OSError as e:
         print("file not found or can't be read")

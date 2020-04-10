@@ -6,14 +6,15 @@ import os as _os
 class Devoirs():
     def __init__(self):
         self.donnees = {}
+        self.path_main = _os.path.dirname(_os.path.realpath(__file__))
 
     def delete(self,matiere, nom):
-        path = "{0}{1}data{1}{2}{1}{3}.dev".format(_os.pardir, _os.sep, matiere, nom)
+        path = "{0}{1}data{1}{2}{1}{3}.dev".format(self.path_main, _os.sep, matiere, nom)
         _os.remove(path)
 
     def save(self, matiere, nom, content):
-            path_dir = f"{_os.pardir}{_os.sep}data{_os.sep}{matiere}"
-            path = f"{_os.pardir}{_os.sep}data{_os.sep}{matiere}{_os.sep}{nom}.dev"
+            path_dir = f"{self.path_main}{_os.sep}data{_os.sep}{matiere}"
+            path = f"{self.path_main}{_os.sep}data{_os.sep}{matiere}{_os.sep}{nom}.dev"
             if not matiere in self.donnees:
                 self.donnees[matiere] = {}
             if not _os.path.exists(path_dir):
@@ -38,7 +39,7 @@ class Devoirs():
             self.donnees[path_mat] = {}
 
         if nom != None:
-            path = f"{_os.pardir}{_os.sep}data{_os.sep}{path_mat}{_os.sep}{nom}.dev"
+            path = f"{self.path_main}{_os.sep}data{_os.sep}{path_mat}{_os.sep}{nom}.dev"
             try:
                 f = open(path, "r")
                 self.donnees[path_mat][nom] = f.read()
@@ -46,7 +47,7 @@ class Devoirs():
                 f.close()
             return self.donnees[path_mat][nom]
         else:
-            path = f"{_os.pardir}{_os.sep}data{_os.sep}{path_mat}"
+            path = f"{self.path_main}{_os.sep}data{_os.sep}{path_mat}"
             for pathdirs, dirs, files in _os.walk(path):
                 if pathdirs == path:
                     for i in files:
@@ -58,7 +59,7 @@ class Devoirs():
 
 
     def load_all(self):
-        path = f"{_os.pardir}{_os.sep}data"
+        path = f"{self.path_main}{_os.sep}data"
         for pathdirs, dirs, files in _os.walk(path):
             if pathdirs != path:
                 for i in files:

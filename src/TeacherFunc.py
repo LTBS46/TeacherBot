@@ -4,6 +4,7 @@ from ErrorsEq import *
 commdict = {}
 helphandler = {}
 
+
 def namef(name):
     to_split = False
     if name[-2:] == '_h':

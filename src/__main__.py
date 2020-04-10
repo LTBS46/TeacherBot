@@ -6,6 +6,7 @@ import Devoirs as D
 import Cours as C
 import os
 import atexit
+os.path.dirname(os.path.realpath(__file__))
 
 def main():
     parsearg(globals())
@@ -21,4 +22,5 @@ def main():
     return 0
 
 if __name__ == '__main__':
+
     exit(main())
